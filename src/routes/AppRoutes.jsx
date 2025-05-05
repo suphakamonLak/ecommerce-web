@@ -17,6 +17,7 @@ import HomeUser from '../pages/user/HomeUser'
 import LayoutUser from '../layouts/LayoutUser'
 import ProtectRouteUser from '../routes/ProtectRoteUser'
 import ProtectRoteAdmin from './ProtectRoteAdmin'
+import EditProduct from '../pages/admin/EditProduct'
 
 // display page for user (ยังไม่ล็อกอินหรือไม่มีบัญชี)
 const router = createBrowserRouter([
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
       { index: true, element: <Dashboard/> },
       { path: 'category', element: <Category/> },
       { path: 'product', element: <Product/> },
+      { path: 'product/:id', element: <EditProduct/> },
       { path: 'manage', element: <Manage/> },
     ]
   },

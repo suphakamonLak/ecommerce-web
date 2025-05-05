@@ -9,9 +9,33 @@ export const createProduct = async (token, form) => {
     })
 }
 
-export const listProducts = async (token, count = 20) => {
+export const listProducts = async (token, count = 100) => {
     // url, data, config
     return await axios.get(`http://localhost:5000/api/products/${count}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}
+
+export const readProduct = async (token, id) => {// 
+    return await axios.get(`http://localhost:5000/api/product/${id}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}
+
+export const updateProduct = async (token, id, form) => {
+    return await axios.put(`http://localhost:5000/api/product/${id}`, form, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}
+
+export const removeProduct = async (token, id) => {
+    return await axios.delete(`http://localhost:5000/api/product/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
