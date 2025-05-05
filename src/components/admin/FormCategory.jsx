@@ -5,30 +5,22 @@ import { toast } from 'react-toastify'
 
 export default function FormCategory() {
     const [name, setName] = useState('')
-    const [categorys, setCategorys] = useState([])
+    // const [categorys, setCategorys] = useState([])
     const token = useEcomStore((state) => state.token)
+    const categories = useEcomStore((state) => state.categories)
+    const getCategory = useEcomStore((state) => state.getCategory)
 
     useEffect(() => {
-        getcategory(token)
+        getCategory(token)
     }, [])
 
-    const getcategory = async (token) => {
-        try {
-            const res = await listCategory(token)
-            
-            console.log(res)
-            setCategorys(res.data)
-            // console.log(res)
-        } catch (err) {
-            toast.error(err)
-        }
-    }
+    
 
     const handleRemove = async (id) => {
         try {
             const res = await removeCategory(token, id)
             toast.success(`Deleted ${res.data.name} success `)
-            getcategory(token)
+            getCategory(token)
         } catch (err) {
             toast.error(err)
         }
@@ -43,7 +35,7 @@ export default function FormCategory() {
             const res = await createCategory(token, {name})
             // console.log(res)
             toast.success(`Add category ${res.data.name}  success`)
-            getcategory(token)
+            getCategory(token)
         } catch (err) {
             toast.error(err)
         }
@@ -65,7 +57,7 @@ export default function FormCategory() {
             <hr />
             <ul className='list-none'>
                 {
-                    categorys.map((item, index) =>
+                    categories.map((item, index) =>
                         <li className='flex justify-between py-2' key={index}>
                             {item.name}
                             <button 
