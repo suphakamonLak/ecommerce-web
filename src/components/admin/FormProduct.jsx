@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import useEcomStore from '../../store/Ecom_store'
 import { toast } from 'react-toastify'
-import { createProduct } from '../../api/Product'
+import { createProduct, removeProduct } from '../../api/Product'
 import Uploadfile from './Uploadfile'
+import { Link } from 'react-router-dom'
+import { Pencil } from 'lucide-react'
+import { Trash2 } from 'lucide-react'
 
 const initialState = {
-    "title": "Core i 7",
-    "description": "des",
-    "price": 200,
-    "quantity": 9,
+    "title": "",
+    "description": "",
+    "price": 0,
+    "quantity": 0,
     "categoryId": '',
     "images": []
 }
@@ -19,16 +22,22 @@ export default function FormProduct() {
     const categories = useEcomStore((state) => state.categories)
     const getProduct = useEcomStore((state) => state.getProduct)
     const products = useEcomStore((state) => state.products)
-    const [form, setForm] = useState(initialState)
+    const [form, setForm] = useState({
+        "title": "",
+        "description": "",
+        "price": 0,
+        "quantity": 0,
+        "categoryId": '',
+        "images": []
+    })
 
     useEffect(() => {
         getCategory(token)
-        getProduct(token, 7)
+        getProduct(token, 100)
     }, [])
 
     
     const handleOnChange = (e) => {// เหลือ validate form
-        console.log(e.target.name, e.target.value)
         setForm({
             ...form,
             [e.target.name]: e.target.value
@@ -39,9 +48,23 @@ export default function FormProduct() {
         e.preventDefault()
         try {
             const res = await createProduct(token, form)
+            setForm(initialState)
+            getProduct(token)
             toast.success(`Add product ${res.data.title} successful`)
         } catch (err) {
             toast.error(err)
+        }
+    }
+
+    const handleRemove = async (id) => {
+        if(window.confirm('ต้องการลบสินค้าหรือไม่')) {
+            try {
+                const res = await removeProduct(token, id)
+                toast.success('Deleted product success')
+                getProduct(token)
+            } catch (err) {
+                toast.error(err)
+            }
         }
     }
 
@@ -120,7 +143,7 @@ export default function FormProduct() {
                         <Uploadfile form={form} setForm={setForm} />
 
                         <button
-                            className='bg-sky-300 p-1 rounded-xl ml-2'
+                            className='bg-sky-300 p-1 rounded-xl ml-2 hover:scale-105 hover:translate-x-1 hover:duration-200'
                         >
                             เพิ่มสินค้า
                         </button>
@@ -133,6 +156,7 @@ export default function FormProduct() {
                     <tr className='border'>
                         <th>ลำดับ</th>
                         <th className='border text-center p-5'>ชื่อสินค้า</th>
+                        <th className='border text-center p-5'>รูปภาพ</th>
                         <th className='border text-center p-5'>รายละเอียดสินค้า</th>
                         <th className='border text-center p-5'>ราคาสินค้า</th>
                         <th className='border text-center p-5'>จำนวนสินค้า</th>
@@ -148,14 +172,33 @@ export default function FormProduct() {
                                     <tr key={index} className='border'>
                                         <th className='text-center p-5'>{index+1}</th>
                                         <td className='text-center p-5'>{item.title}</td>
+                                        <td>
+                                            {
+                                                item.images.length > 0
+                                                ?   <img 
+                                                        className='w-24 h-24 rounded-lg shadow-md'
+                                                        src={item.images[0].url}
+                                                    />
+                                                :   <div
+                                                        className='w-24 h-24 bg-gray-200 rounded-md flex items-center justify-center'
+                                                    >
+                                                        No Image
+                                                    </div>
+                                            }
+                                        </td>
                                         <td className='text-center p-5'>{item.description}</td>
                                         <td className='text-center p-5'>{item.price}</td>
                                         <td className='text-center p-5'>{item.quantity}</td>
                                         <td className='text-center p-5'>{item.sold}</td>
                                         <td className='text-center p-5'>{item.updatedAt}</td>
                                         <td className='flex gap-2 justify-center m-2'>
-                                            <button className='bg-yellow-200 p-2 rounded-md text-gray-800'>แก้ไข</button>
-                                            <button className='bg-red-500 p-2 rounded-md text-gray-800'>ลบ</button>
+                                            <p className='bg-yellow-200 p-2 rounded-md text-gray-800 hover:scale-105 hover:translate-x-1 hover:duration-200'><Link to={'/admin/product/' + item.id}><Pencil /></Link></p>
+                                            <p 
+                                                className='bg-red-500 p-2 rounded-md text-gray-800 hover:scale-105 hover:translate-x-1 hover:duration-200'
+                                                onClick={() => handleRemove(item.id)}
+                                            >
+                                                <Trash2 />
+                                            </p>
                                         </td>
                                     </tr>
                                 )
