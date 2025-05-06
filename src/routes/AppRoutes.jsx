@@ -18,6 +18,7 @@ import LayoutUser from '../layouts/LayoutUser'
 import ProtectRouteUser from '../routes/ProtectRoteUser'
 import ProtectRoteAdmin from './ProtectRoteAdmin'
 import EditProduct from '../pages/admin/EditProduct'
+import Payment from '../pages/user/Payment'
 
 // display page for user (ยังไม่ล็อกอินหรือไม่มีบัญชี)
 const router = createBrowserRouter([
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
     element: <ProtectRouteUser element={<LayoutUser/>} />,
     children: [
       { index: true, element: <HomeUser/> },
+      { path: 'payment', element: <Payment/> },
     ]
   },
 ])

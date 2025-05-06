@@ -1,7 +1,10 @@
 import React from 'react'
+import ListCart from '../components/cart/ListCart'
 
 export default function Cart() {
   return (
-    <div>Cart</div>
+    <div>
+      <ListCart/>
+    </div>
   )
 }
