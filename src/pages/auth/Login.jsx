@@ -42,7 +42,7 @@ export default function Login() {
     if (role == 'admin') {
       navigate('/admin')
     } else {
-      navigate('/user')
+      navigate(-1)// หลัง login ให้ user กลับไปยังหน้าก่อนหน้านั้น
     }
   })
 

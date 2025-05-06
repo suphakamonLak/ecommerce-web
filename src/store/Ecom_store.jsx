@@ -22,7 +22,6 @@ const ecomStore = (set, get) => ({
     set({carts: uniqe})
   },
   actionUpdateQuantity: (productId, newQuantity) => {
-    console.log('actionUpdateQuantity', productId, newQuantity)
     set((state) => ({
       carts: state.carts.map((item) => 
         item.id === productId // ค่าที่จะ return ออกไป
@@ -32,7 +31,6 @@ const ecomStore = (set, get) => ({
     }))
   },
   actionRemoveProduct: (productId) => {
-    console.log('productId', productId)
     set((state) => ({
       carts: state.carts.filter((item) => 
         item.id !== productId
@@ -41,7 +39,7 @@ const ecomStore = (set, get) => ({
   },
   actionGetTotalPrice: () => {// ราคารวม
     return get().carts.reduce((total, item) => {// ค่าก่อนหน้า, ค่าปัจจุบัน
-      return (total + item.price) * item.count
+      return total + item.price * item.count
     }, 0)// calback function, initial value
   },
   actionLogin: async (form) => {
