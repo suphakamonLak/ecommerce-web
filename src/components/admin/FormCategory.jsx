@@ -5,7 +5,6 @@ import { toast } from 'react-toastify'
 
 export default function FormCategory() {
     const [name, setName] = useState('')
-    // const [categorys, setCategorys] = useState([])
     const token = useEcomStore((state) => state.token)
     const categories = useEcomStore((state) => state.categories)
     const getCategory = useEcomStore((state) => state.getCategory)

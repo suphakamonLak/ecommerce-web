@@ -9,13 +9,9 @@ export const createProduct = async (token, form) => {
     })
 }
 
-export const listProducts = async (token, count = 100) => {
+export const listProducts = async (count = 100) => {
     // url, data, config
-    return await axios.get(`http://localhost:5000/api/products/${count}`, {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    })
+    return await axios.get(`http://localhost:5000/api/products/${count}`)
 }
 
 export const readProduct = async (token, id) => {// 
@@ -62,4 +58,8 @@ export const removeFiles = async (token, public_id) => {
             Authorization: `Bearer ${token}`
         }
     })
+}
+
+export const searchFilters = async (arg) => {
+    return await axios.post('http://localhost:5000/api/search/filters', arg)
 }

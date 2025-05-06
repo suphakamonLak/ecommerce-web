@@ -23,7 +23,7 @@ export default function FormEditProduct() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        getCategory(token)
+        getCategory()
         fetchProduct(token, id, form)
     }, [])
 
