@@ -29,8 +29,6 @@ export default function Login() {
       
       // Check role user
       roleRedirect(role)
-
-      console.log('res', res)
       toast.success('Welcome Back')
     } catch (err) {
       const errMsg = err.response?.data?.message

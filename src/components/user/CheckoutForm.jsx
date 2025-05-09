@@ -34,12 +34,12 @@ export default function CheckoutForm() {
     } else {
         // Create order
         saveOrder(token, payload)
-        .then((res) => {
-            // console.log(res)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+          .then((res) => {
+              // console.log(res)
+          })
+          .catch((err) => {
+              console.log(err)
+          })
     }
     setIsLoading(false)
   };
@@ -56,17 +56,17 @@ export default function CheckoutForm() {
         >
             <PaymentElement id="payment-element" options={paymentElementOptions} />
             <button
-                className="stripe-button"
-                disabled={isLoading || !stripe || !elements}
-                id="submit"
+              className="stripe-button"
+              disabled={isLoading || !stripe || !elements}
+              id="submit"
             >
-            <span id="button-text">
+              <span id="button-text">
                 {
-                    isLoading 
-                    ? <div className="spinner" id="spinner"></div>
-                    : "Pay now"
+                  isLoading 
+                  ? <div className="spinner" id="spinner"></div>
+                  : "Pay now"
                 }
-            </span>
+              </span>
             </button>
             {/* Show any error or success messages */}
             {message && <div id="payment-message">{message}</div>}

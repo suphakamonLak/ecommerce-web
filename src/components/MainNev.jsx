@@ -13,9 +13,9 @@ export default function MainNev() {
                     <div className='flex items-center gap-6'>
                         <Link to={'/'} className='text-2xl font-bold'>LOGO</Link>
                         <Link to={'/'}>Home</Link>
-                        <Link to={'shop'}>Shop</Link>
+                        <Link to={'/shop'}>Shop</Link>
                         {/* badge (when use UI component) */}
-                        <Link to={'cart'} className='relative py-4'>
+                        <Link to={'/cart'} className='relative py-4'>
                             Cart
                             {
                                 carts.length > 0 && <span className='absolute top-0 bg-gray-400 rounded-full px-2'>{carts.length}</span>
@@ -24,8 +24,8 @@ export default function MainNev() {
                     </div>
 
                     <div className='flex items-center gap-4'>
-                        <Link to={'register'}>Register</Link>
-                        <Link to={'login'}>Login</Link>
+                        <Link to={'/register'}>Register</Link>
+                        <Link to={'/login'}>Login</Link>
                     </div>
                 </div>
             </div>

@@ -20,6 +20,7 @@ export default function ListCart() {
         })
         .catch((err) => {
             console.log(err)
+            toast.warn(err.response.data.message)
         })
     }
 

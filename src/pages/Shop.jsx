@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import ProductCard from '../components/cart/ProductCard'
+import ProductCard from '../components/card/ProductCard'
 import useEcomStore from '../store/Ecom_store'
-import SearchCard from '../components/cart/SearchCard'
-import CartCard from '../components/cart/CartCard'
+import SearchCard from '../components/card/SearchCard'
+import CartCard from '../components/card/CartCard'
 
 export default function Shop() {
   const getProduct = useEcomStore((state) => state.getProduct)
