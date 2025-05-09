@@ -2,7 +2,6 @@ import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Shop from '../pages/Shop'
 import Cart from '../pages/Cart'
-import History from '../pages/History'
 import Checkout from '../pages/Checkout'
 import Login from '../pages/auth/Login'
 import Register from '../pages/auth/Register'
@@ -19,6 +18,7 @@ import ProtectRouteUser from '../routes/ProtectRoteUser'
 import ProtectRoteAdmin from './ProtectRoteAdmin'
 import EditProduct from '../pages/admin/EditProduct'
 import Payment from '../pages/user/Payment'
+import History from '../pages/user/History'
 
 // display page for user (ยังไม่ล็อกอินหรือไม่มีบัญชี)
 const router = createBrowserRouter([
@@ -29,7 +29,6 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: 'shop', element: <Shop /> },
       { path: 'cart', element: <Cart /> },
-      { path: 'history', element: <History /> },
       { path: 'checkout', element: <Checkout /> },
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
@@ -52,6 +51,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomeUser/> },
       { path: 'payment', element: <Payment/> },
+      { path: 'history', element:  <History/>},
     ]
   },
 ])
