@@ -19,6 +19,7 @@ import ProtectRoteAdmin from './ProtectRoteAdmin'
 import EditProduct from '../pages/admin/EditProduct'
 import Payment from '../pages/user/Payment'
 import History from '../pages/user/History'
+import ManageOrders from '../pages/admin/ManageOrders'
 
 // display page for user (ยังไม่ล็อกอินหรือไม่มีบัญชี)
 const router = createBrowserRouter([
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
       { path: 'product', element: <Product/> },
       { path: 'product/:id', element: <EditProduct/> },
       { path: 'manage', element: <Manage/> },
+      { path: 'orders', element:  <ManageOrders/>},
     ]
   },
   {

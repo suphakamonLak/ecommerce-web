@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useEcomStore from '../../store/Ecom_store'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
+import { numberFormat } from '../../utils/number'
 
 export default function SearchCard() {
     const getProduct = useEcomStore((state) => state.getProduct)
@@ -97,8 +98,8 @@ export default function SearchCard() {
                 <h1 className='text-md font-bold my-2'>ค้นหาราคา</h1>
                 <div>
                     <div className='flex justify-between'>
-                        <span>ต่ำสุด: {price[0]}</span>
-                        <span>สูงสุด: {price[1]}</span>
+                        <span>ต่ำสุด: {numberFormat(price[0])}</span>
+                        <span>สูงสุด: {numberFormat(price[1])}</span>
                     </div>
                     <Slider 
                         onChange={handlePrice}

@@ -62,6 +62,18 @@ export default function SidebarAdmin() {
                 <ShoppingBasket className='mr-2'/>
                 <p>Product</p>
             </NavLink>
+
+            <NavLink 
+                to={'orders'}
+                className={({ isActive }) => 
+                    isActive 
+                        ? 'bg-gray-900 rounded-md text-white px-4 py-2 hover:bg-gray-700 flex items-center' 
+                        : 'text-gray-300 px-4 py- hover:bg-gray-700 hover:tetx-white rounded flex items-center'
+                }
+            >
+                <ShoppingBasket className='mr-2'/>
+                <p>Orders</p>
+            </NavLink>
         </nav>
 
         <div className='py-4 px-4'>
