@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useStore } from "zustand";
 import useEcomStore from "../../store/Ecom_store";
 import { getOrders } from "../../api/User";
+import { dateFormat } from "../../utils/dateFormat";
+import { numberFormat } from "../../utils/number";
 
 export default function HistoryCard() {
   const [orders, setOrders] = useState([]); //เก็บข้อมูลที่ fetch มาจาก backend
@@ -14,13 +15,21 @@ export default function HistoryCard() {
   const handleGetOrders = (token) => {
     getOrders(token)
       .then((res) => {
-        // console.log(res);
         setOrders(res.data.orders);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  const changeColorStatusOrder = (status) => {
+    switch(status) {
+      case 'Not Process': return 'bg-gray-300'
+      case 'Processing': return 'bg-blue-300'
+      case 'Completed': return 'bg-green-300'
+      case 'Cancelled': return 'bg-red-300'
+    }
+  }
 
   return (
     <div className="space-y-4">
@@ -34,10 +43,12 @@ export default function HistoryCard() {
               {/* Header (Loop products) */}
               <div className="flex justify-between mb-2">
                 <div>
-                  <p className="text-ml">Order date</p>
-                  <p className="font-bold">{item.updatedAt}</p>
+                  <p className="text-lg">วันที่สั่งสินค้า</p>
+                  <p className="font-bold">{dateFormat(item.updatedAt)}</p>
                 </div>
-                <div>{item.orderStatus}</div>
+                <div>
+                  <span className={`${changeColorStatusOrder(item.orderStatus)} p-1 rounded-full`}>{item.orderStatus}</span>
+                </div>
               </div>
               {/* Table */}
               <div>
@@ -53,13 +64,12 @@ export default function HistoryCard() {
                   <tbody>
                     {
                         item.products?.map((product, index) => {
-                            console.log('product', product)
                             return (
                                 <tr key={index}>
                                     <td>{product.product.title}</td>
-                                    <td>{product.product.price}</td>
+                                    <td>{numberFormat(product.product.price)}</td>
                                     <td>{product.count}</td>
-                                    <td>{product.count * product.product.price}</td>
+                                    <td>{numberFormat(product.count * product.product.price)}</td>
                                 </tr>
                             )
                         })
@@ -71,7 +81,7 @@ export default function HistoryCard() {
               <div>
                 <div className="text-right mt-4">
                   <p>ราคาสุทธิ</p>
-                  <p>{item.cartTotal}</p>
+                  <p className="font-bold">{numberFormat(item.cartTotal)} ฿</p>
                 </div>
               </div>
             </div>

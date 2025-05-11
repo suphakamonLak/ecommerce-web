@@ -3,6 +3,7 @@ import { listUserCart, saveAddress } from '../../api/User'
 import useEcomStore from '../../store/Ecom_store'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import { numberFormat } from '../../utils/number'
 
 export default function SummaryCart() {
     const token = useEcomStore((state) => state.token)
@@ -82,10 +83,10 @@ export default function SummaryCart() {
                                     <div className='flex justify-between items-end'>
                                         <div>
                                             <p>{item.product.title}</p>
-                                            <p>จำนวน: {item.count} x {item.price}</p>
+                                            <p>จำนวน: {item.count} x {numberFormat(item.price)}</p>
                                         </div>
                                         <div>
-                                            <p className='text-red-700 font-bold'>{item.price * item.count} ฿</p>
+                                            <p className='text-red-700 font-bold'>{ numberFormat(item.price * item.count)} ฿</p>
                                         </div>
                                     </div>
                                 </div>
@@ -96,18 +97,18 @@ export default function SummaryCart() {
                         <div>
                             <div className='flex justify-between'> 
                                 <p>ค่าจัดส่ง:</p>
-                                <p>0.00</p>
+                                <p>0.00 ฿</p>
                             </div>
                             <div className='flex justify-between'> 
                                 <p>ส่วนลด:</p>
-                                <p>0.00</p>
+                                <p>0.00 ฿</p>
                             </div>
                         </div>
 
                         <div>
                             <div className='flex justify-between'>
                                 <p className='font-bold text-md'>ยอดรวมสุทธิ:</p>
-                                <p className='text-red-500 font-bold text-md'>{cartTotal}</p>
+                                <p className='text-red-500 font-bold text-md'>{numberFormat(cartTotal)} ฿</p>
                             </div>
                             <button 
                                 onClick={handleGotoPayment}

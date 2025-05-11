@@ -6,6 +6,8 @@ import Uploadfile from './Uploadfile'
 import { Link } from 'react-router-dom'
 import { Pencil } from 'lucide-react'
 import { Trash2 } from 'lucide-react'
+import { numberFormat } from '../../utils/number'
+import { dateFormat } from '../../utils/dateFormat'
 
 const initialState = {
     "title": "",
@@ -187,10 +189,10 @@ export default function FormProduct() {
                                             }
                                         </td>
                                         <td className='text-center p-5'>{item.description}</td>
-                                        <td className='text-center p-5'>{item.price}</td>
+                                        <td className='text-center p-5'>{numberFormat(item.price)}</td>
                                         <td className='text-center p-5'>{item.quantity}</td>
                                         <td className='text-center p-5'>{item.sold}</td>
-                                        <td className='text-center p-5'>{item.updatedAt}</td>
+                                        <td className='text-center p-5'>{dateFormat(item.updatedAt)}</td>
                                         <td className='flex gap-2 justify-center m-2'>
                                             <p className='bg-yellow-200 p-2 rounded-md text-gray-800 hover:scale-105 hover:translate-x-1 hover:duration-200'><Link to={'/admin/product/' + item.id}><Pencil /></Link></p>
                                             <p 

@@ -1,7 +1,7 @@
 import React from 'react'
-import TableOrders from './TableOrders'
+import TableOrders from '../../components/admin/TableOrders'
 
-export default function ManageOrder() {
+export default function ManageOrders() {
   return (
     <div>
       <TableOrders/>

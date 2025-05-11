@@ -1,6 +1,7 @@
 import React from 'react'
 import { ShoppingCart } from 'lucide-react'
 import useEcomStore from '../../store/Ecom_store'
+import { numberFormat } from '../../utils/number'
 
 export default function ProductCard({ item }) {
   const actionAddtoCart = useEcomStore((state) => state.actionAddtoCart)
@@ -25,7 +26,7 @@ export default function ProductCard({ item }) {
         </div>
 
         <div className='flex justify-between items-center'>
-          <span className='text-sm font-bold'>{item.price}</span>
+          <span className='text-sm font-bold'>{numberFormat(item.price)}</span>
           <button 
             onClick={() => actionAddtoCart(item)}
             className='bg-pink-300 rounded-md p-1 hover:bg-pink-500 shadow-md'

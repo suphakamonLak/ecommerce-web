@@ -2,6 +2,7 @@ import React from 'react'
 import { Trash2, Plus, Minus } from 'lucide-react'
 import useEcomStore from '../../store/Ecom_store'
 import { Link } from 'react-router-dom'
+import { numberFormat } from '../../utils/number'
 
 export default function CartCard() {
     const carts = useEcomStore((state) => state.carts)
@@ -61,7 +62,7 @@ export default function CartCard() {
                                 </div>
                                 {/* Right */}
                                 <div className='font-bold text-gray-800'>
-                                    {item.price * item.count}
+                                    {numberFormat(item.price * item.count)}
                                 </div>
                             </div>
                         </div>
@@ -71,7 +72,7 @@ export default function CartCard() {
                 {/* Total */}
                 <div className='flex justify-between px-2'>
                     <span>รวม</span>
-                    <span>{actionGetTotalPrice()}</span>
+                    <span>{numberFormat(actionGetTotalPrice())}</span>
                 </div>
 
                 {/* Button */}
