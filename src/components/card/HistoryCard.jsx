@@ -66,10 +66,10 @@ export default function HistoryCard() {
                         item.products?.map((product, index) => {
                             return (
                                 <tr key={index}>
-                                    <td>{product.product.title}</td>
-                                    <td>{numberFormat(product.product.price)}</td>
-                                    <td>{product.count}</td>
-                                    <td>{numberFormat(product.count * product.product.price)}</td>
+                                    <td >{product.product.title}</td>
+                                    <td className="text-center">{numberFormat(product.product.price)}</td>
+                                    <td className="text-center">{product.count}</td>
+                                    <td className="text-center">{numberFormat(product.count * product.product.price)}</td>
                                 </tr>
                             )
                         })

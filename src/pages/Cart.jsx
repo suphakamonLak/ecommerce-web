@@ -3,7 +3,7 @@ import ListCart from '../components/card/ListCart'
 
 export default function Cart() {
   return (
-    <div>
+    <div className='h-svh'>
       <ListCart/>
     </div>
   )

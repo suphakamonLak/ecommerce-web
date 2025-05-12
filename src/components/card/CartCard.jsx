@@ -26,7 +26,7 @@ export default function CartCard() {
                                     {
                                         item.images && item.images.length > 0
                                         ?  <img 
-                                                className='w-16 h-16 object-cover rounded-md'
+                                                className='w-16 h-16 object-contain rounded-md'
                                                 src={item.images[0].url}
                                             />
                                         : <div className='w-16 h-16 bg-gray-200 rounded-md flex text-center items-center'>No Image</div>

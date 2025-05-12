@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import useEcomStore from '../store/Ecom_store'
-import { ChevronDown, LucideLollipop } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 export default function MainNev() {
     const carts = useEcomStore((state) => state.carts)
@@ -18,7 +18,9 @@ export default function MainNev() {
             <div className='mx-auto px-4'>
                 <div className='flex justify-between h-16'>
                     <div className='flex items-center gap-6'>
-                        <NavLink to={'/'} className='text-2xl font-bold'>LOGO</NavLink>
+                        <NavLink to={'/'} >
+                            <img className='w-14 h-14 object-contain' src="../../../assets/images/Logo.png"/>
+                        </NavLink>
                         <NavLink 
                             className={({isActive}) =>
                                 isActive? 'bg-gray-200 px-3 py-2 rounded-md text-sm font-medium': 'px-3 py-2 rounded-md text-sm font-medium'
@@ -65,7 +67,7 @@ export default function MainNev() {
                             {
                                 isOpen && 
                                 <div
-                                    className='absolute mt-2 top-12 bg-white shadow-md'
+                                    className='absolute mt-2 top-12 bg-white shadow-md z-50'
                                 >
                                     <Link className='block px-2 py-2 hover:bg-gray-100' to={'/user/history'}>History</Link>
                                     <button className='block px-2 py-2 hover:bg-gray-100' onClick={() => logout()}> Logout</button>
@@ -92,10 +94,6 @@ export default function MainNev() {
                             </NavLink>
                         </div>
                 }
-
-                
-
-                
                 </div>
             </div>
         </nav>
