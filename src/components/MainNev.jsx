@@ -1,32 +1,101 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import useEcomStore from '../store/Ecom_store'
+import { ChevronDown, LucideLollipop } from 'lucide-react'
 
 export default function MainNev() {
     const carts = useEcomStore((state) => state.carts)
-
+    const user = useEcomStore((state) => state.user)// using check 
+    const logout = useEcomStore((state) => state.logout)// using clear state
+    const [isOpen, setIsOpen] = useState(false)
+    
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen)
+    } 
 
     return (
-        <nav className='bg-purple-200'>
+        <nav className='bg-white'>
             <div className='mx-auto px-4'>
                 <div className='flex justify-between h-16'>
                     <div className='flex items-center gap-6'>
-                        <Link to={'/'} className='text-2xl font-bold'>LOGO</Link>
-                        <Link to={'/'}>Home</Link>
-                        <Link to={'/shop'}>Shop</Link>
+                        <NavLink to={'/'} className='text-2xl font-bold'>LOGO</NavLink>
+                        <NavLink 
+                            className={({isActive}) =>
+                                isActive? 'bg-gray-200 px-3 py-2 rounded-md text-sm font-medium': 'px-3 py-2 rounded-md text-sm font-medium'
+                            }
+                            to={'/'}
+                        >
+                            Home
+                        </NavLink>
+                        <NavLink 
+                            className={({isActive}) =>
+                                isActive? 'bg-gray-200 px-3 py-2 rounded-md text-sm font-medium': 'px-3 py-2 rounded-md text-sm font-medium'
+                            }
+                            to={'/shop'}
+                        >
+                            Shop
+                        </NavLink>
                         {/* badge (when use UI component) */}
-                        <Link to={'/cart'} className='relative py-4'>
+                        <NavLink 
+                            to={'/cart'} 
+                            className={({isActive}) =>
+                                isActive? 'bg-gray-200 px-3 py-2 rounded-md text-sm font-medium': 'px-3 py-2 rounded-md text-sm font-medium'
+                            }
+                        >
                             Cart
                             {
-                                carts.length > 0 && <span className='absolute top-0 bg-gray-400 rounded-full px-2'>{carts.length}</span>
+                                carts.length > 0 && <span className='absolute top-0 bg-gray-400 rounded-full px-2 mt-1'>{carts.length}</span>
                             }
-                        </Link>
+                        </NavLink>
                     </div>
+                {
+                    user
+                    ?   <div className='flex items-center gap-4'>
+                            <button 
+                                onClick={toggleDropdown}
+                                className='flex gap-2 items-center'
+                            >
+                                <img 
+                                    className='w-8'
+                                    src="https://cdn-icons-png.flaticon.com/128/149/149071.png"
+                                />
+                                <ChevronDown className='hover:bg-gray-300 w-5 h-5 rounded-sm' size={18} />
+                            </button>
 
-                    <div className='flex items-center gap-4'>
-                        <Link to={'/register'}>Register</Link>
-                        <Link to={'/login'}>Login</Link>
-                    </div>
+                            {
+                                isOpen && 
+                                <div
+                                    className='absolute mt-2 top-12 bg-white shadow-md'
+                                >
+                                    <Link className='block px-2 py-2 hover:bg-gray-100' to={'/user/history'}>History</Link>
+                                    <button className='block px-2 py-2 hover:bg-gray-100' onClick={() => logout()}> Logout</button>
+                                </div>
+                            }
+                            
+                        </div>
+                    :   <div className='flex items-center gap-4'>
+                            <NavLink 
+                                className={({isActive}) =>
+                                    isActive? 'bg-gray-200 px-3 py-2 rounded-md text-sm font-medium': 'px-3 py-2 rounded-md text-sm font-medium'
+                                }
+                                to={'/register'}
+                            >
+                                Register
+                            </NavLink>
+                            <NavLink 
+                                className={({isActive}) =>
+                                    isActive? 'bg-gray-200 px-3 py-2 rounded-md text-sm font-medium': 'px-3 py-2 rounded-md text-sm font-medium'
+                                }
+                                to={'/login'}
+                            >
+                                Login
+                            </NavLink>
+                        </div>
+                }
+
+                
+
+                
                 </div>
             </div>
         </nav>

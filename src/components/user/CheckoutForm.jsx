@@ -7,6 +7,8 @@ import {
 import '../../stripe.css'
 import { saveOrder } from "../../api/User";
 import useEcomStore from "../../store/Ecom_store";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -15,6 +17,8 @@ export default function CheckoutForm() {
   const [isLoading, setIsLoading] = useState(false);
 
   const token = useEcomStore((state) => state.token)
+  const clearCart = useEcomStore((state) => state.clearCart)
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,17 +33,26 @@ export default function CheckoutForm() {
       redirect: 'if_required'
     });
 
+    console.log('payload', payload)
     if (payload.error) {
-        setMessage(error.message)
-    } else {
-        // Create order
-        saveOrder(token, payload)
-          .then((res) => {
-              // console.log(res)
-          })
-          .catch((err) => {
-              console.log(err)
-          })
+      setMessage(payload.error.message)
+      toast.error(payload.error.message)
+    } 
+    else if (payload.paymentIntent.status === 'succeeded') {
+      // Create order
+      saveOrder(token, payload)
+        .then((res) => {
+          clearCart()// ลบสินค้าในตะกร้าแค่ใน local storage
+          toast.success('ชำระเงินเรียบร้อย')
+          navigate('/user/history')
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+    else {
+      console.log('Something wrong')
+      toast.warning('ชำระเงินไม่สำเร็จ')
     }
     setIsLoading(false)
   };
