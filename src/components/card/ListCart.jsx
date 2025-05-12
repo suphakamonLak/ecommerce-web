@@ -79,8 +79,9 @@ export default function ListCart() {
                             user
                             ?   <Link>
                                     <button 
+                                        disabled={cart.length < 1}
                                         onClick={() => handleSaveCart()}
-                                        className='bg-red-500 w-full rounded-md text-white py-2 shadow-md hover:bg-red-400 hover:text-black'
+                                        className={`${cart.length < 1? 'bg-red-200 ' : 'bg-red-500 hover:bg-red-400 hover:text-black'} w-full rounded-md text-white py-2 shadow-md `}
                                     >
                                         สั่งซื้อ
                                     </button>
