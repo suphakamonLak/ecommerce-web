@@ -3,7 +3,7 @@ import HistoryCard from '../../components/card/HistoryCard'
 
 export default function History() {
   return (
-    <div>
+    <div className='h-full'>
       <HistoryCard/>
     </div>
   )

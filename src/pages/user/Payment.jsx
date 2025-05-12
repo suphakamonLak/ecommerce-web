@@ -28,7 +28,7 @@ export default function Payment() {
   const loader = 'auto'
   
   return (
-    <div>
+    <div className="h-svh">
       {
         clientSecret && (
           <Elements 

@@ -26,7 +26,7 @@ export default function ListCart() {
     }
 
     return (
-        <div className='bg-gray-100 rounded-md p-4'>
+        <div>
             {/* Header */}
             <div className='flex gap-4'>
                 <LayoutList />
@@ -47,7 +47,7 @@ export default function ListCart() {
                                     {
                                         item.images && item.images.length > 0
                                         ?  <img 
-                                                className='w-16 h-16 object-cover rounded-md'
+                                                className='w-16 h-16 object-contain rounded-md'
                                                 src={item.images[0].url}
                                             />
                                         : <div className='w-16 h-16 bg-gray-200 rounded-md flex text-center items-center'>No Image</div>
@@ -68,7 +68,7 @@ export default function ListCart() {
                 }
                 </div>
                 {/* Right */}
-                <div className='bg-white rounded-md shadow-md space-y-4 p-4 mt-4'>
+                <div className='h-60 bg-white rounded-md shadow-md space-y-4 p-4 mt-4'>
                     <p className='text-xl font-bold'>ยอดรวม</p>
                     <div className='flex justify-between'>
                         <span>รวมสุทธิ</span>

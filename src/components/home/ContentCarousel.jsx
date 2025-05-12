@@ -16,7 +16,6 @@ export default function ContentCarousel() {
     const hdlGetImage = async () => {
         axios.get('https://picsum.photos/v2/list?page=1&limit=15')
         .then((res) => {
-            console.log(res)
             setImages(res.data)
         })
         .catch((err) => {
