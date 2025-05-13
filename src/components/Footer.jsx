@@ -5,7 +5,7 @@ import { MessageCircleMore } from 'lucide-react'
 
 export default function Footer() {
     return (
-        <div className='h-20 w-full bg-gray-100 shadow-lg rounded-md flex items-center justify-center'>
+        <div className='h-20 w-full bg-gray-100 shadow-lg rounded-md flex items-center justify-center text-black'>
             <div className='w-2/5 flex justify-center gap-2'>
                 <button className='border-2 border-gray-500 p-1 rounded-full'><Mail/></button>
                 <button className='border-2 border-gray-500 p-1 rounded-full'><CircleFadingPlus /></button>
@@ -14,7 +14,7 @@ export default function Footer() {
             <div className='w-2/5 h-50 flex justify-center'>
                 <img className='w-16 h-16 object-contain' src="../../../assets/images/Logo.png"/>
             </div>
-            <div className='w-2/5 text-center'>
+            <div className='w-2/5 text-center text-base'>
                 <p className='font-bold'>Suphakamon L.</p>
             </div>
         </div>

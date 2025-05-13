@@ -16,7 +16,6 @@ export default function TableUsers() {
     const handleGetAllUsers = (token) => {
         getListAllUsers(token)
             .then((res) => {
-                console.log(res.data)
                 setUsers(res.data)
             })
             .catch((err) => {
@@ -64,61 +63,56 @@ export default function TableUsers() {
     }
 
     return (
-        <div className='container mx-auto p-4 bg-white shadow-md'>
-            <div>
-                <table className='border w-full'>
-                    <thead className='bg-gray-200'>
-                        <tr className='border'>
-                        <th className='border p-2'>ลำดับ</th>
-                        <th className='border p-2'>Email</th>
-                        <th className='border p-2'>วันที่แก้ไขล่าสุด</th>
-                        <th className='border p-2'>สิทธิ์</th>
-                        <th className='border p-2'>สถานะ</th>
-                        <th className='border p-2'>จัดการ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            users?.map((item, index) => {
-                                return (
-                                    <tr key={index} className='border'>
-                                        <td className='text-center'>{index+1}</td>
-                                        <td>{item.email}</td>
-                                        <td className='text-center'>{dateFormat(item.updateedAt)}</td>
-                                        <td className='text-center'>
-                                            <select 
-                                                onChange={(e) => handleChangeUserRole(item.id, e.target.value)}
-                                                value={item.role}
-                                            >
-                                                <option>user</option>
-                                                <option>admin</option>
-                                            </select>
-                                        </td>
-                                        <td className='text-center p-2'>
-                                            <span className={`${changeColorEnabledUser(item.enable)} p-1 rounded-full`}>{item.enable? 'Active' : 'Inactive'}</span>
-                                        </td>
-                                        <td className='text-center'>
-                                            {/* toggle */}
-                                            {/* <input
-                                                type="checkbox"
-                                                checked="checked"
-                                                className="toggle border-indigo-600 bg-indigo-500 checked:border-orange-500 checked:bg-orange-400 checked:text-orange-800"
-                                            /> */}
-                                            <button
-                                                onClick={() => handleChangeUserStatus(item.id, item.enable)}
-                                                className='bg-gray-200 p-1 rounded-full'
-                                            >
-                                                {item.enable? 'Disable': 'Enable'}
-                                            </button>
-                                        </td>
-                                    </tr>
-                                )
-                            })
-                        }
-                        
-                    </tbody>
-                </table>
-            </div>
+        <div className='relative overflow-x-auto rounded-lg border'>
+            <table className='w-full text-left rtl:text-right'>
+                <thead className='bg-cyan-800 text-white text-lg'>
+                    <tr>
+                        <th className='px-6 py-3'>ลำดับ</th>
+                        <th className='px-6 py-3'>Email</th>
+                        <th className='px-6 py-3'>วันที่แก้ไขล่าสุด</th>
+                        <th className='px-6 py-3'>สิทธิ์</th>
+                        <th className='px-6 py-3'>สถานะ</th>
+                        <th className='px-6 py-3'>จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        users?.map((item, index) => {
+                            return (
+                                <tr key={index} className='border-b cursor-pointer transition'>
+                                    <td className='px-6 py-3'>{index+1}</td>
+                                    <td>{item.email}</td>
+                                    <td className='px-6 py-3'>{dateFormat(item.updateedAt)}</td>
+                                    <td className='px-6 py-3'>
+                                        <select 
+                                            className="select select-neutral bg-white"
+                                            onChange={(e) => handleChangeUserRole(item.id, e.target.value)}
+                                            value={item.role}
+                                        >
+                                            <option disabled >เลือกสิทธิ์</option>
+                                            <option>user</option>
+                                            <option>admin</option>
+                                        </select>
+                                    </td>
+                                    <td className='text-center p-2'>
+                                        <span className={`${changeColorEnabledUser(item.enable)} p-1 rounded-full`}>{item.enable? 'Active' : 'Inactive'}</span>
+                                    </td>
+                                    <td className='px-6 py-3'>
+                                        <input 
+                                            type="checkbox"
+                                            className="toggle toggle-success toggle-lg border border-gray-400"
+                                            // className={`toggle ${item.enable ? 'toggle-success' : 'toggle-error'}`} 
+                                            checked={item.enable}
+                                            onChange={() => handleChangeUserStatus(item.id, item.enable)}
+                                        />
+                                    </td>
+                                </tr>
+                            )
+                        })
+                    }
+                    
+                </tbody>
+            </table>
         </div>
     )
 }

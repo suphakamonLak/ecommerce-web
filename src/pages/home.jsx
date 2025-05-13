@@ -5,7 +5,7 @@ import NewProduct from '../components/home/NewProduct'
 
 export default function Home() {
   return (
-    <div className='h-full'>
+    <div className='h-full font-mono'>
       <ContentCarousel/>
       <p className='text-2xl my-4 text-center font-bold'>สินค้าขายดี</p>
       <BestSeller/>

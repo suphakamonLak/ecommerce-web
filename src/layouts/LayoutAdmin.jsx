@@ -5,7 +5,7 @@ import HeaderAdmin from '../components/admin/HeaderAdmin'
 
 export default function LayoutAdmin() {
   return (
-    <div className='flex h-screen'>
+    <div className='flex h-screen text-black font-mono'>
       <SidebarAdmin/>
 
       <div className='flex-1 flex flex-col'>

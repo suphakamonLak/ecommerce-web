@@ -5,12 +5,12 @@ import Footer from '../components/Footer'
 
 export default function LayoutUser() {
   return (
-    <>
+    <div className='bg-white text-black font-mono'>
         <MainNev/>
         <main className='h-full px-4 mt-2 mx-auto'>
           <Outlet /> 
         </main> 
         <Footer/>
-    </>
+    </div>
   )
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { createCategory, listCategory, removeCategory} from '../../api/Category'
 import useEcomStore from '../../store/Ecom_store'
 import { toast } from 'react-toastify'
+import ToolBar from './ToolBar'
 
 export default function FormCategory() {
     const [name, setName] = useState('')
@@ -12,8 +13,6 @@ export default function FormCategory() {
     useEffect(() => {
         getCategory(token)
     }, [])
-
-    
 
     const handleRemove = async (id) => {
         try {
@@ -42,15 +41,16 @@ export default function FormCategory() {
 
     return (
         <div className='container mx-auto p-4 bg-white shadow-md'>
-            <h1>Category Management</h1>
-            <form className='my-4' onSubmit={handleSubmit}>
+            <h1 className='text-2xl font-bold'>ประเภทสินค้า</h1>
+            <form className='flex gap-2 my-4' onSubmit={handleSubmit}>
                 <input 
                     onChange={(e) => setName(e.target.value)}
-                    className='border'
+                    className='bg-gray-200 border p-2 rounded-md w-2/5 mt-1 mb-1 focus:outline-none focus:ring-2
+                            focus:ring-blue-400 focus:border-transparent text-gray-500'
                     type="text" 
+                    placeholder='--ประเภทสินค้า--'
                 />
-
-                <button className='bg-sky-800 p-1 rounded-xl text-white mx-4'>Add category</button>
+                <ToolBar title='บันทึก' />
             </form>
 
             <hr />
