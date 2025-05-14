@@ -30,7 +30,7 @@ export default function ListCart() {
             {/* Header */}
             <div className='flex gap-4'>
                 <LayoutList />
-                <h1 className='text-xl font-bold'>รายการสินค้า {cart.length} รายการ</h1>
+                <h1 className='text-xl'>รายการสินค้า {cart.length} รายการ</h1>
             </div>
             
             {/* List */}
@@ -54,7 +54,7 @@ export default function ListCart() {
                                     }
                                     
                                     <div>
-                                        <p className='text-md font-bold'>{item.title}</p>
+                                        <p className='text-md'>{item.title}</p>
                                         <p className='text-sm'>{numberFormat(item.price)} x {item.count}</p>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@ export default function ListCart() {
                 </div>
                 {/* Right */}
                 <div className='h-60 bg-white rounded-md shadow-md space-y-4 p-4 mt-4'>
-                    <p className='text-xl font-bold'>ยอดรวม</p>
+                    <p className='text-xl'>ยอดรวม</p>
                     <div className='flex justify-between'>
                         <span>รวมสุทธิ</span>
                         <span className='text-xl font-bold text-gray-800'>{numberFormat(actionGetTotalPrice())} ฿</span>

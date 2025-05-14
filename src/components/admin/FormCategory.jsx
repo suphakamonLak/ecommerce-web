@@ -3,6 +3,7 @@ import { createCategory, listCategory, removeCategory} from '../../api/Category'
 import useEcomStore from '../../store/Ecom_store'
 import { toast } from 'react-toastify'
 import ToolBar from './ToolBar'
+import { Save } from 'lucide-react'
 
 export default function FormCategory() {
     const [name, setName] = useState('')
@@ -41,18 +42,25 @@ export default function FormCategory() {
 
     return (
         <div className='container mx-auto p-4 bg-white shadow-md'>
-            <h1 className='text-2xl font-bold'>ประเภทสินค้า</h1>
-            <form className='flex gap-2 my-4' onSubmit={handleSubmit}>
+            <h1 className='text-2xl font-bold text-gray-700'>ประเภทสินค้า</h1>
+            <form className='flex items-center gap-2 my-4' onSubmit={handleSubmit}>
                 <input 
                     onChange={(e) => setName(e.target.value)}
-                    className='bg-gray-200 border p-2 rounded-md w-2/5 mt-1 mb-1 focus:outline-none focus:ring-2
+                    className='bg-gray-200 border-none  p-2 rounded-md w-2/5 mt-1 mb-1 focus:outline-none focus:ring-2
                             focus:ring-blue-400 focus:border-transparent text-gray-500'
                     type="text" 
                     placeholder='--ประเภทสินค้า--'
                 />
-                <ToolBar title='บันทึก' />
+                <div>
+                    <button
+                        type='submit'
+                        className='flex gap-2 items-center text-white bg-cyan-800 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-500 rounded-lg p-2 font-medium focus:outline-none'
+                    >
+                        <Save />
+                        <p>บันทึก</p>
+                    </button>
+                </div>
             </form>
-
             <hr />
             <ul className='list-none'>
                 {
@@ -61,7 +69,7 @@ export default function FormCategory() {
                             {item.name}
                             <button 
                                 onClick={() => handleRemove(item.id)}
-                                className='bg-red-400 rounded-xl p-1'
+                                className='bg-red-400 rounded-xl px-2 py-1'
                             >
                                 Delete
                             </button>

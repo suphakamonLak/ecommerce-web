@@ -15,12 +15,12 @@ export default function TableUsers() {
 
     const handleGetAllUsers = (token) => {
         getListAllUsers(token)
-            .then((res) => {
-                setUsers(res.data)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+        .then((res) => {
+            setUsers(res.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
 
     const changeColorEnabledUser = (enable) => {
@@ -29,14 +29,12 @@ export default function TableUsers() {
     }
 
     const handleChangeUserStatus = (userId, userStatus) => {
-        console.log(userId, userStatus)
         const value = {
             id: userId,
             enabled: !userStatus
         }
         changeUserStatus(token, value)
             .then((res) => {
-                console.log(res)
                 toast.success('อัปเดตสถานะผู้ใช้สำเร็จ')
                 handleGetAllUsers(token)// update status user
             })
@@ -63,27 +61,45 @@ export default function TableUsers() {
     }
 
     return (
-        <div className='relative overflow-x-auto rounded-lg border'>
-            <table className='w-full text-left rtl:text-right'>
-                <thead className='bg-cyan-800 text-white text-lg'>
+        <div className="relative overflow-x-auto">
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead className="text-lg text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th className='px-6 py-3'>ลำดับ</th>
-                        <th className='px-6 py-3'>Email</th>
-                        <th className='px-6 py-3'>วันที่แก้ไขล่าสุด</th>
-                        <th className='px-6 py-3'>สิทธิ์</th>
-                        <th className='px-6 py-3'>สถานะ</th>
-                        <th className='px-6 py-3'>จัดการ</th>
+                        <th scope="col" className="px-6 py-3 rounded-s-lg">
+                            ลำดับ
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Email
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            วันที่แก้ล่าสุด
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            สิทธิ์
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            สถานะ
+                        </th>
+                        <th scope="col" className="px-6 py-3 rounded-e-lg">
+                            จัดการ
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         users?.map((item, index) => {
                             return (
-                                <tr key={index} className='border-b cursor-pointer transition'>
-                                    <td className='px-6 py-3'>{index+1}</td>
-                                    <td>{item.email}</td>
-                                    <td className='px-6 py-3'>{dateFormat(item.updateedAt)}</td>
-                                    <td className='px-6 py-3'>
+                                <tr key={index} className="bg-white border-b dark:bg-gray-800 text-gray-900 font-medium">
+                                    <th scope="row" className="px-6 py-4 font-medium  whitespace-nowrap dark:text-white">
+                                        {index+1}
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        {item.email}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {dateFormat(item.updatedAt)}
+                                    </td>
+                                    <td className="px-6 py-4">
                                         <select 
                                             className="select select-neutral bg-white"
                                             onChange={(e) => handleChangeUserRole(item.id, e.target.value)}
@@ -94,23 +110,24 @@ export default function TableUsers() {
                                             <option>admin</option>
                                         </select>
                                     </td>
-                                    <td className='text-center p-2'>
-                                        <span className={`${changeColorEnabledUser(item.enable)} p-1 rounded-full`}>{item.enable? 'Active' : 'Inactive'}</span>
+                                    <td className="px-5 py-4">
+                                        <span className={`${changeColorEnabledUser(item.enable)} px-2 py-1.5  rounded-full`}>{item.enable? 'Active' : 'Inactive'}</span>
                                     </td>
-                                    <td className='px-6 py-3'>
-                                        <input 
-                                            type="checkbox"
-                                            className="toggle toggle-success toggle-lg border border-gray-400"
-                                            // className={`toggle ${item.enable ? 'toggle-success' : 'toggle-error'}`} 
-                                            checked={item.enable}
-                                            onChange={() => handleChangeUserStatus(item.id, item.enable)}
-                                        />
+                                    <td className="px-6 py-4">
+                                        <label className="inline-flex items-center me-5 cursor-pointer">
+                                            <input 
+                                                type="checkbox" 
+                                                className="sr-only peer" 
+                                                checked={item.enable}
+                                                onChange={() => handleChangeUserStatus(item.id, item.enable)}
+                                            />
+                                            <div className="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600 dark:peer-checked:bg-teal-600"></div>
+                                        </label>
                                     </td>
                                 </tr>
                             )
                         })
                     }
-                    
                 </tbody>
             </table>
         </div>

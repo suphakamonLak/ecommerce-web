@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 
 export default function Layout() {
   return (
-    <div className='bg-white text-black font-mono'>
+    <div className='bg-white text-black font-kanit'>
         <MainNev/>
 
         <main className='h-full px-4 mt-2 mx-auto'>

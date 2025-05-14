@@ -4,7 +4,7 @@ import SummaryCart from '../components/card/SummaryCart'
 
 export default function Checkout() {
   return (
-    <div className='h-svh font-mono'>
+    <div className='h-svh'>
       <SummaryCart/>
     </div>
   )

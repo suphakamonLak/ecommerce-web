@@ -14,7 +14,7 @@ export default function MainNev() {
     } 
 
     return (
-        <nav className='bg-white text-black'>
+        <nav className='bg-white text-black font-kanit'>
             <div className='mx-auto px-4'>
                 <div className='flex justify-between h-16'>
                     <div className='flex items-center gap-6'>
@@ -23,7 +23,7 @@ export default function MainNev() {
                         </NavLink>
                         <NavLink 
                             className={({isActive}) =>
-                                isActive? 'bg-gray-200 px-3 py-2 rounded-md text-sm font-medium': 'px-3 py-2 rounded-md text-sm font-medium'
+                                isActive? 'bg-gray-200 px-3 py-2 rounded-md font-medium': 'px-3 py-2 rounded-md font-medium'
                             }
                             to={'/'}
                         >
@@ -31,7 +31,7 @@ export default function MainNev() {
                         </NavLink>
                         <NavLink 
                             className={({isActive}) =>
-                                isActive? 'bg-gray-200 px-3 py-2 rounded-md text-sm font-medium': 'px-3 py-2 rounded-md text-sm font-medium'
+                                isActive? 'bg-gray-200 px-3 py-2 rounded-md font-medium': 'px-3 py-2 rounded-md font-medium'
                             }
                             to={'/shop'}
                         >
@@ -41,7 +41,7 @@ export default function MainNev() {
                         <NavLink 
                             to={'/cart'} 
                             className={({isActive}) =>
-                                isActive? 'bg-gray-200 px-3 py-2 rounded-md text-sm font-medium': 'px-3 py-2 rounded-md text-sm font-medium'
+                                isActive? 'bg-gray-200 px-3 py-2 rounded-md font-medium': 'px-3 py-2 rounded-md font-medium'
                             }
                         >
                             Cart

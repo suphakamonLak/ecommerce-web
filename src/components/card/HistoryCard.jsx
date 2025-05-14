@@ -33,19 +33,18 @@ export default function HistoryCard() {
   }
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-bold">ประวัติการสั่งซื้อสินค้า</h1>
+    <div className="space-y-6 mt-4">
+      <h1 className="text-2xl">ประวัติการสั่งซื้อสินค้า</h1>
       {/* คลุม Card */}
-      <div className="space-y-4">
+      <div className="space-y-6">
         {/* Card (Loop orders)*/}
         {orders?.map((item, index) => {
           return (
             <div className="bg-gray-100 p-4 rounded-md shadow-md" key={index}>
               {/* Header (Loop products) */}
-              <div className="flex justify-between mb-2">
+              <div className="flex justify-between items-center mb-2">
                 <div>
-                  <p className="text-lg">วันที่สั่งสินค้า</p>
-                  <p className="font-bold">{dateFormat(item.updatedAt)}</p>
+                  <p className="text-lg">{dateFormat(item.updatedAt)}</p>
                 </div>
                 <div>
                   <span className={`${changeColorStatusOrder(item.orderStatus)} flex items-center px-2 py-1 rounded-full`}>
@@ -54,25 +53,25 @@ export default function HistoryCard() {
                 </div>
               </div>
               {/* Table */}
-              <div>
-                <table className="border w-full">
-                  <thead className="bg-gray-200 p-1">
+              <div className="relative overflow-x-auto">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                  <thead className="text-lg text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                      <th>สินค้า</th>
-                      <th>ราคา</th>
-                      <th>จำนวน</th>
-                      <th>รวม</th>
+                      <th scope="col" className="px-6 py-3">สินค้า</th>
+                      <th scope="col" className="px-6 py-3">ราคา</th>
+                      <th scope="col" className="px-6 py-3">จำนวน</th>
+                      <th scope="col" className="px-6 py-3">รวม</th>
                     </tr>
                   </thead>
                   <tbody>
                     {
                         item.products?.map((product, index) => {
                             return (
-                                <tr key={index}>
-                                    <td >{product.product.title}</td>
-                                    <td className="text-center">{numberFormat(product.product.price)}</td>
-                                    <td className="text-center">{product.count}</td>
-                                    <td className="text-center">{numberFormat(product.count * product.product.price)}</td>
+                                <tr key={index} className="bg-white border-b dark:bg-gray-800 text-gray-900 font-medium">
+                                    <th scope="row" className="px-6 py-4 font-medium  whitespace-nowrap dark:text-white">{product.product.title}</th>
+                                    <td className="px-6 py-4">{numberFormat(product.product.price)}</td>
+                                    <td className="px-6 py-4">{product.count}</td>
+                                    <td className="px-6 py-4">{numberFormat(product.count * product.product.price)}</td>
                                 </tr>
                             )
                         })

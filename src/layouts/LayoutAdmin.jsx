@@ -1,18 +1,21 @@
-import React from 'react'
 import { Outlet } from 'react-router-dom'
 import SidebarAdmin from '../components/admin/SidebarAdmin'
 import HeaderAdmin from '../components/admin/HeaderAdmin'
 
 export default function LayoutAdmin() {
   return (
-    <div className='flex h-screen text-black font-mono'>
-      <SidebarAdmin/>
+    <div className='bg-white text-black font-kanit'>
+      <HeaderAdmin/>
+      <div className='grid grid-cols-1 md:grid-cols-8 gap-3'>
+        {/* Sizebar */}
+        <div className='md:col-span-2'>
+          <SidebarAdmin/>
+        </div>
 
-      <div className='flex-1 flex flex-col'>
-        <HeaderAdmin/>
-        <main className='flex-1 p-6 bg-gray-100 overflow-y-auto'>
+        {/* Detail */}
+        <div className='md:col-span-6 p-3 rounded-xl drop-shadow border bg-white '> 
           <Outlet />
-        </main>
+        </div>
       </div>
     </div>
   )

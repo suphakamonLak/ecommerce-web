@@ -56,11 +56,11 @@ export default function SummaryCart() {
                 {/* Lifte */}
                 <div className='w-2/4'>
                     <div className='bg-gray-100 p-4 rounded-md border shadow-md space-y-2'>
-                        <h1 className='text-lg font-bold'>ที่อยู่ในการจัดส่ง</h1>
+                        <h1 className='text-lg'>ที่อยู่ในการจัดส่ง</h1>
                         <textarea 
                             onChange={(e) => setAddress(e.target.value)}
-                            className='w-full px-2' 
-                            placeholder='กรุณากรอกที่อยู่'
+                            className='w-full px-2 border-none rounded-lg bg-white text-gray-500' 
+                            placeholder='กรุณากรอกที่อยู่...'
                             required
                         />
                         <button
@@ -75,7 +75,7 @@ export default function SummaryCart() {
                 {/* Right */}
                 <div className='w-2/4'>
                     <div className='bg-gray-100 p-4 rounded-md border shadow-md space-y-4'>
-                        <h1 className='text-lg font-bold'>คำสั่งซื้อของคุญ</h1>
+                        <h1 className='text-lg'>คำสั่งซื้อของคุญ</h1>
                         {/* Item list */}
                         {
                             products?.map((item, index) => 
@@ -86,7 +86,7 @@ export default function SummaryCart() {
                                             <p>จำนวน: {item.count} x {numberFormat(item.price)}</p>
                                         </div>
                                         <div>
-                                            <p className='text-red-700 font-bold'>{ numberFormat(item.price * item.count)} ฿</p>
+                                            <p>{ numberFormat(item.price * item.count)} ฿</p>
                                         </div>
                                     </div>
                                 </div>

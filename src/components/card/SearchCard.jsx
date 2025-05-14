@@ -65,18 +65,19 @@ export default function SearchCard() {
     }
 
     return (
-        <div>
-            <h1 className='text-xl font-bold mb-4'>ค้นหาสินค้า</h1>
-            <input 
-                className='border rounded-md w-full mb-4 px-2'
-                placeholder='ค้นหาสินค้า...'
-                type='text'
-                onChange={(e) => setText(e.target.value)}
-            />
-
+        <div className='space-y-6'>
+            <div>
+                <input 
+                    className='border rounded-md w-full px-2 text-gray-500'
+                    placeholder='ค้นหาสินค้า...'
+                    type='text'
+                    onChange={(e) => setText(e.target.value)}
+                />
+            </div>
+            
             <hr />
             <div>
-                <h1 className='text-md font-bold my-2'>หมวดหมู่สินค้า</h1>
+                <h1 className='text-md my-2'>หมวดหมู่สินค้า</h1>
                 <div>
                     {
                         categories.map((item, index) => 
@@ -95,7 +96,7 @@ export default function SearchCard() {
             <hr />
 
             <div>
-                <h1 className='text-md font-bold my-2'>ค้นหาราคา</h1>
+                <h1 className='text-md my-2'>ค้นหาราคา</h1>
                 <div>
                     <div className='flex justify-between'>
                         <span>ต่ำสุด: {numberFormat(price[0])}</span>
