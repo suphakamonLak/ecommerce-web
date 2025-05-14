@@ -13,7 +13,7 @@ export default function Shop() {
   }, [])
 
   return (
-    <div className='h-full flex'>
+    <div className='h-full flex font-mono'>
         {/* Searchbar */}
         <div className='w-1/4 border h-screen p-4'>
           <SearchCard/>

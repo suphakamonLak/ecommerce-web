@@ -44,19 +44,20 @@ export default function TableOrders() {
   }
   
   return (
-    <div className='container mx-auto p-4 bg-white shadow-md'>
-      <div>
-        <table className='border w-full'>
-          <thead className='bg-gray-200'>
-            <tr className='border'>
-              <th className='border p-2'>ลำดับ</th>
-              <th className='border p-2'>ผู้ใช้งาน</th>
-              <th className='border p-2'>วันที่</th>
-              <th className='border p-2'>ที่อยู่</th>
-              <th className='border p-2'>สินค้า</th>
-              <th className='border p-2'>รวม</th>
-              <th className='border p-2'>สถานะ</th>
-              <th className='border p-2'>จัดการ</th>
+    // <div className='container mx-auto p-4 bg-white shadow-md'>
+    <div>
+      <div className='relative overflow-x-auto rounded-lg border'>
+        <table className='w-full text-left rtl:text-right'>
+          <thead className='bg-cyan-800 text-white text-lg'>
+            <tr>
+              <th className='px-4 py-3'>ลำดับ</th>
+              <th className='px-4 py-3'>ผู้ใช้งาน</th>
+              <th className='px-4 py-3'>วันที่</th>
+              <th className='px-4 py-3'>ที่อยู่</th>
+              <th className='px-4 py-3'>สินค้า</th>
+              <th className='px-4 py-3'>รวม</th>
+              <th className='px-4 py-3'>สถานะ</th>
+              <th className='px-4 py-3'>จัดการ</th>
               {/* <th>อัพเดตสถานะ</th> */}
             </tr>
           </thead>
@@ -64,10 +65,10 @@ export default function TableOrders() {
             {
               orders?.map((item, index) => {
                 return (
-                  <tr key={index} className='border'>
-                    <td className='text-center'>{index+1}</td>
+                  <tr key={index} className='border-b cursor-pointer transition'>
+                    <td className='px-6 py-3'>{index+1}</td>
                     <td>{item.orderedBy.email}</td>
-                    <td className='text-center'>
+                    <td className='px-6 py-3'>
                       {dateFormat(item.createdAt)}
                     </td>
                     <td>{item.orderedBy.address}</td>
@@ -89,8 +90,9 @@ export default function TableOrders() {
                         {item.orderStatus}
                       </span>
                     </td>
-                    <td className='text-center'>
+                    <td className='px-6 py-3'>
                       <select
+                      className='select select-neutral bg-white'
                         value={item.orderStatus}
                         onChange={(e) => handleChangeOrderStatus(token, item.id, e.target.value)}
                       >

@@ -14,7 +14,7 @@ export default function MainNev() {
     } 
 
     return (
-        <nav className='bg-white'>
+        <nav className='bg-white text-black'>
             <div className='mx-auto px-4'>
                 <div className='flex justify-between h-16'>
                     <div className='flex items-center gap-6'>

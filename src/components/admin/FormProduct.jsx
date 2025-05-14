@@ -8,6 +8,7 @@ import { Pencil } from 'lucide-react'
 import { Trash2 } from 'lucide-react'
 import { numberFormat } from '../../utils/number'
 import { dateFormat } from '../../utils/dateFormat'
+import ToolBar from '../admin/ToolBar'
 
 const initialState = {
     "title": "",
@@ -71,114 +72,115 @@ export default function FormProduct() {
     }
 
     return (
-        <div className='container mx-auto p-4 bg-white shadow-md'>
+        <div className='container mx-auto p-4 bg-white shadow-lg rounded-lg'>
             <form onSubmit={handleSubmit}> 
-                <h1>เพิ่มข้อมูลสินค้า</h1>
-                <div className='flex flex-col gap-3'>
-                    <div>
-                        <label name='title'>ชื่อสินค้า: </label>
-                        <input className='border mt-5 p-2 rounded-md'
-                            value={form.title}
-                            onChange={handleOnChange}
-                            name='title'
-                            placeholder='Title'
-                            id='title'
-                        />
+                <h1 className='text-3xl font-bold my-5'>เพิ่มข้อมูลสินค้า</h1>
+                <ToolBar title='เพิ่มสินค้า' />
+                <div className='space-y-3 mt-5'>
+                    <div className="grid grid-cols-2 gap-3">
+                        <div>
+                            <label name='title' className='text-xl text-gray-900'><p>ชื่อสินค้า</p></label>
+                            <input className='bg-gray-200 border p-2 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
+                            focus:ring-blue-400 focus:border-transparent text-gray-500'
+                                value={form.title}
+                                onChange={handleOnChange}
+                                name='title'
+                                placeholder='--ชื่อสินค้า--'
+                                id='title'
+                            />
+                        </div>
+                        <div>
+                            <label name='price' className='text-xl text-gray-900'>ราคาสินค้า</label>
+                            <input className='bg-gray-200 border-none p-2 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
+                            focus:ring-blue-400 focus:border-transparent text-gray-500'
+                                value={form.price}
+                                onChange={handleOnChange}
+                                name='price'
+                                placeholder='Price'
+                                id='price'
+                                type='number'
+                                min={0}
+                            />
+                        </div>
                     </div>
-
                     <div>
-                        <label name='description'>รายละเอียดสินค้า: </label>
-                        <input className='border p-2 rounded-md'
+                        <label name='description' className='text-xl text-gray-900'>รายละเอียดสินค้า</label>
+                        <textarea className='bg-gray-200 border-none  p-2 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
+                        focus:ring-blue-400 focus:border-transparent text-gray-500'
                             value={form.description}
                             onChange={handleOnChange}
                             name='description'
-                            placeholder='Desscription'
+                            placeholder='--รายละอียดสินค้า--'
                             id='description'
                         />
                     </div>
-
-                    <div>
-                        <label name='price'>ราคาสินค้า: </label>
-                        <input className='border p-2 rounded-md'
-                            value={form.price}
-                            onChange={handleOnChange}
-                            name='price'
-                            placeholder='Price'
-                            id='price'
-                            type='number'
-                            min={0}
-                        />
+                    <div className='grid grid-cols-2 gap-3'>
+                        <div>
+                            <label name='quantity' className='text-xl text-gray-900'>จำนวนสินค้า</label>
+                            <input className='bg-gray-200 border-none  p-2 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
+                        focus:ring-blue-400 focus:border-transparent text-gray-500'
+                                value={form.quantity}
+                                onChange={handleOnChange}
+                                name='quantity'
+                                placeholder='quantity'
+                                id='quantity'
+                                type='number'
+                                min={0}
+                            />
+                        </div>
+                        <div>
+                            <label className='text-xl text-gray-900'>ประเภทสินค้า</label>
+                            <select
+                                className='bg-gray-200 border-none  p-2 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
+                        focus:ring-blue-400 focus:border-transparent text-gray-500'
+                                name='categoryId'
+                                onChange={handleOnChange}
+                                value={form.categoryId}
+                                required
+                            >
+                                <option value="" disabled>--ประเภทสินค้า--</option>
+                                {
+                                    categories.map((item, index) => 
+                                        <option key={index} value={item.id}>{item.name}</option>
+                                    )
+                                }
+                                
+                            </select>
+                        </div>
                     </div>
-
                     <div>
-                        <label name='quantity'>จำนวนสินค้า: </label>
-                        <input className='border p-2 rounded-md'
-                            value={form.quantity}
-                            onChange={handleOnChange}
-                            name='quantity'
-                            placeholder='quantity'
-                            id='quantity'
-                            type='number'
-                            min={0}
-                        />
-                    </div>
-                    
-                    <div>
-                        <select
-                            className='border'
-                            name='categoryId'
-                            onChange={handleOnChange}
-                            value={form.categoryId}
-                            required
-                        >
-                            <option value="" disabled>ประเภทสินค้า</option>
-                            {
-                                categories.map((item, index) => 
-                                    <option key={index} value={item.id}>{item.name}</option>
-                                )
-                            }
-                            
-                        </select>
-
-                        <hr />
                         {/* upload file */}
                         <Uploadfile form={form} setForm={setForm} />
-
-                        <button
-                            className='bg-sky-300 p-1 rounded-xl ml-2 hover:scale-105 hover:translate-x-1 hover:duration-200'
-                        >
-                            เพิ่มสินค้า
-                        </button>
                     </div>
                 </div>
             </form>
-            <div className="overflow-x-auto mt-5">
-                <table className="table table-zebra">
-                    <thead>
-                    <tr className='border'>
-                        <th>ลำดับ</th>
-                        <th className='border text-center p-5'>ชื่อสินค้า</th>
-                        <th className='border text-center p-5'>รูปภาพ</th>
-                        <th className='border text-center p-5'>รายละเอียดสินค้า</th>
-                        <th className='border text-center p-5'>ราคาสินค้า</th>
-                        <th className='border text-center p-5'>จำนวนสินค้า</th>
-                        <th className='border text-center p-5'>ขายแล้ว</th>
-                        <th className='border text-center p-5'>วันที่อัปเดต</th>
-                        <th className='border text-center p-5'>จัดการ</th>
+            <div className="relative overflow-x-auto rounded-lg border mt-5">
+                <table className='w-full text-left rtl:text-right'>
+                    <thead className='bg-cyan-800 text-white text-lg'>
+                    <tr>
+                        <th className='px-2 py-3'>ลำดับ</th>
+                        <th className='px-2 py-3'>ชื่อสินค้า</th>
+                        <th className='px-2 py-3'>รูปภาพ</th>
+                        <th className='px-2 py-3'>รายละเอียดสินค้า</th>
+                        <th className='px-2 py-3'>ราคาสินค้า</th>
+                        <th className='px-2 py-3'>จำนวนสินค้า</th>
+                        <th className='px-2 py-3'>ขายแล้ว</th>
+                        <th className='px-2 py-3'>วันที่อัปเดต</th>
+                        <th className='px-2 py-3'>จัดการ</th>
                     </tr>
                     </thead>
                     <tbody>
                         {
                             products.map((item, index) => {
                                 return (
-                                    <tr key={index} className='border'>
-                                        <th className='text-center p-5'>{index+1}</th>
-                                        <td className='text-center p-5'>{item.title}</td>
-                                        <td>
+                                    <tr key={index} className='border-b cursor-pointer transition'>
+                                        <th className='px-2 py-3 text-center'>{index+1}</th>
+                                        <td className='px-2 py-3'>{item.title}</td>
+                                        <td className='p-2'>
                                             {
                                                 item.images.length > 0
                                                 ?   <img 
-                                                        className='w-24 h-24 rounded-lg shadow-md'
+                                                        className='w-24 h-24 object-contain rounded-lg shadow-md'
                                                         src={item.images[0].url}
                                                     />
                                                 :   <div
@@ -188,19 +190,25 @@ export default function FormProduct() {
                                                     </div>
                                             }
                                         </td>
-                                        <td className='text-center p-5'>{item.description}</td>
-                                        <td className='text-center p-5'>{numberFormat(item.price)}</td>
-                                        <td className='text-center p-5'>{item.quantity}</td>
-                                        <td className='text-center p-5'>{item.sold}</td>
-                                        <td className='text-center p-5'>{dateFormat(item.updatedAt)}</td>
-                                        <td className='flex gap-2 justify-center m-2'>
-                                            <p className='bg-yellow-200 p-2 rounded-md text-gray-800 hover:scale-105 hover:translate-x-1 hover:duration-200'><Link to={'/admin/product/' + item.id}><Pencil /></Link></p>
-                                            <p 
-                                                className='bg-red-500 p-2 rounded-md text-gray-800 hover:scale-105 hover:translate-x-1 hover:duration-200'
-                                                onClick={() => handleRemove(item.id)}
-                                            >
-                                                <Trash2 />
-                                            </p>
+                                        <td className='px-2 py-3'>{item.description}</td>
+                                        <td className='px-2 py-3'>{numberFormat(item.price)}</td>
+                                        <td className='px-2 py-3 text-center'>{item.quantity}</td>
+                                        <td className='px-2 py-3 text-center'>{item.sold}</td>
+                                        <td className='px-2 py-3 text-center'>{dateFormat(item.updatedAt)}</td>
+                                        <td>
+                                            <div className='flex gap-2 justify-center items-center m-2'>
+                                                <div>
+                                                    <p className='bg-yellow-200 p-2 rounded-md text-gray-800 hover:scale-105 hover:translate-x-1 hover:duration-200'><Link to={'/admin/product/' + item.id}><Pencil /></Link></p>
+                                                </div>
+                                                <div>
+                                                    <p 
+                                                        className='bg-red-500 p-2 rounded-md text-gray-800 hover:scale-105 hover:translate-x-1 hover:duration-200'
+                                                        onClick={() => handleRemove(item.id)}
+                                                    >
+                                                        <Trash2 />
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 )

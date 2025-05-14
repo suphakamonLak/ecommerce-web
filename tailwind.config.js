@@ -5,7 +5,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ['IBM Plex Sans Thai', 'sans-serif'],
+      mono: ['monospace'],
+    },
+    extend: {
+      
+    },
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+    require('flowbite/plugin')
+  ],
 }

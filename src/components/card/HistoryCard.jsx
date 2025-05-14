@@ -3,6 +3,7 @@ import useEcomStore from "../../store/Ecom_store";
 import { getOrders } from "../../api/User";
 import { dateFormat } from "../../utils/dateFormat";
 import { numberFormat } from "../../utils/number";
+import { Hourglass } from "lucide-react";
 
 export default function HistoryCard() {
   const [orders, setOrders] = useState([]); //เก็บข้อมูลที่ fetch มาจาก backend
@@ -47,7 +48,9 @@ export default function HistoryCard() {
                   <p className="font-bold">{dateFormat(item.updatedAt)}</p>
                 </div>
                 <div>
-                  <span className={`${changeColorStatusOrder(item.orderStatus)} p-1 rounded-full`}>{item.orderStatus}</span>
+                  <span className={`${changeColorStatusOrder(item.orderStatus)} flex items-center px-2 py-1 rounded-full`}>
+                    <Hourglass size={18} /> {item.orderStatus}
+                  </span>
                 </div>
               </div>
               {/* Table */}

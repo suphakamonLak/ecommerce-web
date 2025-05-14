@@ -102,6 +102,7 @@ export default function Uploadfile({ form, setForm }) {
             <div>
                 {/* upload multipl images */}
                 <input 
+                    className="file-input file-input-md bg-gray-200 text-gray-500"
                     type='file'
                     name='images'
                     multiple

@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+    font-size: 14px !important;
+}
+
+@media screen(md) {
+    html {
+        font-size: 16px !important;
+    }
+}
+
+[data-theme=dark] {
+    --swiper-pagination-color: #d48a8f;
+    --swiper-navigation-color: #d48a8f;
+}
+
+[data-theme=light] {
+    --swiper-pagination-color: #a52241;
+    --swiper-navigation-color: #a52241;
+}
+
+.required::after {
+    color: red;
+    content: '*';
+}
+
+[data-description] {
+    font-size: 0.9rem;
+}
