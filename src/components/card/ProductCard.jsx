@@ -27,7 +27,7 @@ export default function ProductCard({ item }) {
 
         <div>
           <div>
-            <p className='text-lg font-bold truncate'>{item.title}</p>
+            <p className='text-lg truncate'>{item.title}</p>
             <p className='text-sm text-gray-500 truncate'>{item.description}</p>
           </div>
           <div className='flex justify-between items-center'>

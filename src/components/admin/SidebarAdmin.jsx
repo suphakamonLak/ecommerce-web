@@ -1,23 +1,27 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { Truck } from 'lucide-react'
 import { Box, LayoutDashboard, LayoutList, SquareChartGantt, LogOut  } from 'lucide-react'
+import useEcomStore from '../../store/Ecom_store'
 
 export default function SidebarAdmin() {
-    return (
-        <div className='bg-sky-950 w-64 text-gray-100 flex flex-col h-screen'>
-            <div className='h-24 bg-gray-900 flex items-center justify-center text-2xl font-bold'>
-                Admin Panel
-            </div>
+    const logout = useEcomStore((state) => state.logout)
+    const navigate = useNavigate()
 
-            <nav className='flex-1 px-4 py-4 space-y-2 '>
+    const handleLogout = () => {
+        logout()
+        navigate('/login')
+    }
+    return (
+        <div className='bg-white border rounded-xl p-3 space-y-2'>
+            <p className='font-semibold text-2xl mt-1'>Menu</p>
+            <nav className='flex-1 px-4 py-4 space-y-2'>
                 <NavLink 
                     to={'/admin'}
                     end
-                    className={({ isActive }) => 
-                        isActive 
-                            ? 'bg-gray-900 rounded-md text-white px-4 py-2 hover:bg-gray-700 flex items-center' 
-                            : 'text-gray-300 px-4 py-2 hover:bg-gray-700 hover:tetx-white rounded flex items-center'
+                    className={({ isActive }) => `hover:text-white
+                        ${ isActive 
+                        ? 'bg-gray-900 rounded-md px-4 py-2 text-white hover:bg-gray-700 flex items-center' 
+                        : 'px-4 py-2 hover:bg-gray-700 hover:tetx-white rounded flex items-center'}`
                     }
                 >
                     <LayoutDashboard className='mr-2'/>
@@ -26,10 +30,10 @@ export default function SidebarAdmin() {
 
                 <NavLink 
                     to={'manage'}
-                    className={({ isActive }) => 
-                        isActive 
+                    className={({ isActive }) => `hover:text-white
+                        ${ isActive 
                             ? 'bg-gray-900 rounded-md text-white px-4 py-2 hover:bg-gray-700 flex items-center' 
-                            : 'text-gray-300 px-4 py-2 hover:bg-gray-700 hover:tetx-white rounded flex items-center'
+                            : 'px-4 py-2 hover:bg-gray-700 hover:tetx-white rounded flex items-center'}`
                     }
                 >
                     <SquareChartGantt className='mr-2'/>
@@ -38,10 +42,10 @@ export default function SidebarAdmin() {
 
                 <NavLink 
                     to={'category'}
-                    className={({ isActive }) => 
-                        isActive 
+                    className={({ isActive }) => `hover:text-white
+                        ${ isActive 
                             ? 'bg-gray-900 rounded-md text-white px-4 py-2 hover:bg-gray-700 flex items-center' 
-                            : 'text-gray-300 px-4 py-2 hover:bg-gray-700 hover:tetx-white rounded flex items-center'
+                            : 'px-4 py-2 hover:bg-gray-700 hover:tetx-white rounded flex items-center'}`
                     }
                 >
                     <LayoutList className='mr-2'/>
@@ -50,10 +54,10 @@ export default function SidebarAdmin() {
 
                 <NavLink 
                     to={'product'}
-                    className={({ isActive }) => 
-                        isActive 
-                            ? 'bg-gray-900 rounded-md text-white px-4 py-2 hover:bg-gray-700 flex items-center' 
-                            : 'text-gray-300 px-4 py-2 hover:bg-gray-700 hover:tetx-white rounded flex items-center'
+                    className={({ isActive }) => ` hover:text-white
+                        ${ isActive 
+                        ? 'bg-gray-900 rounded-md text-white px-4 py-2 hover:bg-gray-700 flex items-center' 
+                        : 'px-4 py-2 hover:bg-gray-700 hover:tetx-white rounded flex items-center'}`
                     }
                 >
                     <Box className='mr-2'/>
@@ -62,10 +66,10 @@ export default function SidebarAdmin() {
 
                 <NavLink 
                     to={'orders'}
-                    className={({ isActive }) => 
-                        isActive 
+                    className={({ isActive }) => `hover:text-white
+                        ${ isActive 
                             ? 'bg-gray-900 rounded-md text-white px-4 py-2 hover:bg-gray-700 flex items-center' 
-                            : 'text-gray-300 px-4 py-2 hover:bg-gray-700 hover:tetx-white rounded flex items-center'
+                            : 'px-4 py-2 hover:bg-gray-700 hover:tetx-white rounded flex items-center'}`
                     }
                 >
                     <Truck className='mr-2' />
@@ -74,17 +78,13 @@ export default function SidebarAdmin() {
             </nav>
 
             <div className='py-4 px-4'>
-                <NavLink
-                    to={'/login'} 
-                    className={({ isActive }) => 
-                        isActive 
-                            ? 'bg-gray-900 rounded-md text-white px-4 py-2 hover:bg-gray-700 flex items-center' 
-                            : 'text-gray-300 px-4 py-2 hover:bg-gray-700 hover:tetx-white rounded flex items-center'
-                    }
+                <button
+                    onClick={handleLogout}
+                    className='flex gap-1 items-center px-4 py-2'
                 >
                     <LogOut className='mr-2'/>
                     <p>Logout</p>
-                </NavLink>
+                </button>
             </div>
         </div>
     )

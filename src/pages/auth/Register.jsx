@@ -65,7 +65,7 @@ export default function Register() {
                     Email:
                   </label>
                   <input {...register("email")} 
-                    className={`border p-1 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2 
+                    className={`bg-gray-200 border-none text-gray-500 p-1 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2 
                       focus:ring-blue-400 focus:border-transparent
                       ${errors.email && 'border-red-500'}
                     `}
@@ -76,7 +76,7 @@ export default function Register() {
                 <div>
                   <label name='password'>Password:</label>
                   <input {...register("password")} 
-                    className={`border p-1 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2 
+                    className={`bg-gray-200 border-none text-gray-500 p-1 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2 
                       focus:ring-blue-400 focus:border-transparent
                       ${errors.password && 'border-red-500'}
                     `}
@@ -106,7 +106,7 @@ export default function Register() {
                 <div>
                   <label name='confirmPassword'>Confirm Password:</label>
                   <input {...register("confirmPassword")} 
-                    className={`border p-1 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2 
+                    className={`bg-gray-200 border-none text-gray-500 p-1 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2 
                       focus:ring-blue-400 focus:border-transparent
                       ${errors.confirmPassword && 'border-red-500'}
                     `}

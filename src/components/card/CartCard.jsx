@@ -12,7 +12,6 @@ export default function CartCard() {
 
     return (
         <div>
-            <h1 className='text-2xl font-bold mb-4'>ตะกร้าสินค้า</h1>
             {/* Border */}
             <div className='border p-2 rounded-md'>
                 {/* Card */}
@@ -22,7 +21,7 @@ export default function CartCard() {
                             {/* Row 1 */}
                             <div className='flex justify-between mb-2'>
                                 {/* Left */}
-                                <div className='flex gap-2 items-center'>
+                                <div className='flex gap-2 items-center md:flex flex-col'>
                                     {
                                         item.images && item.images.length > 0
                                         ?  <img 
@@ -32,7 +31,7 @@ export default function CartCard() {
                                         : <div className='w-16 h-16 bg-gray-200 rounded-md flex text-center items-center'>No Image</div>
                                     }
                                     <div>
-                                        <p className='text-md font-bold'>{item.title}</p>
+                                        <p className='text-md'>{item.title}</p>
                                         <p className='text-sm'>{item.description}</p>
                                     </div>
                                 </div>
@@ -45,7 +44,7 @@ export default function CartCard() {
                                 </div>
                             </div>
                             {/* Row 2 */}
-                            <div className='flex justify-between'>
+                            <div className='flex justify-between items-center'>
                                 {/* Left */}
                                 <div className='border rounded-sm px-2 py-1 flex items-center'>
                                     <div

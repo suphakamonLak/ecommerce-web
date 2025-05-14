@@ -2,14 +2,22 @@ import React from 'react'
 import ContentCarousel from '../components/home/ContentCarousel'
 import BestSeller from '../components/home/BestSeller'
 import NewProduct from '../components/home/NewProduct'
+import { ArrowRightLeft } from 'lucide-react'
 
 export default function Home() {
   return (
-    <div className='h-full font-mono'>
+    <div className='h-full space-y-6'>
       <ContentCarousel/>
-      <p className='text-2xl my-4 text-center font-bold'>สินค้าขายดี</p>
+      <div className='flex justify-between'>
+        <p className='text-2xl text-gray-700'>สินค้าขายดี</p>
+        <ArrowRightLeft/>
+      </div>
       <BestSeller/>
-      <p className='text-2xl my-4 text-center font-bold'>สินค้ามาใหม่</p>
+
+      <div className='flex justify-between'>
+        <p className='text-2xl text-gray-700'>สินค้ามาใหม่</p>
+        <ArrowRightLeft/>
+      </div>
       <NewProduct/>
     </div>
   )

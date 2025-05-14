@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { toast } from 'react-toastify'
 import useEcomStore from '../../store/Ecom_store'
 import { useNavigate } from 'react-router-dom'
@@ -6,8 +6,6 @@ import { useNavigate } from 'react-router-dom'
 export default function Login() {
   const navigate = useNavigate()// using redirect
   const actionLogin = useEcomStore((state) => state.actionLogin)// เขียน callback เพื่อรับค่าเฉพาะมา
-  const user = useEcomStore((state) => state.user)
-  const token = useEcomStore((state) => state.token)
 
   const [form, setForm] = useState({
     email: "",
@@ -55,7 +53,7 @@ export default function Login() {
                 <div>
                   <label name='email'>Email:</label>
                   <input 
-                    className='border p-1 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
+                    className='bg-gray-200 border-none text-gray-500 p-1 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
                     focus:ring-blue-400 focus:border-transparent'
                     onChange={handleOnChange}
                     name='email'
@@ -67,7 +65,7 @@ export default function Login() {
                 <div>
                   <label name='password'>Password:</label>
                   <input 
-                    className='border p-1 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
+                    className='bg-gray-200 border-none text-gray-500 p-1 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
                     focus:ring-blue-400 focus:border-transparent'
                     onChange={handleOnChange}
                     name='password'
