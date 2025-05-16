@@ -4,25 +4,22 @@ import useEcomStore from '../../store/Ecom_store'
 import { toast } from 'react-toastify'
 import ToolBar from './ToolBar'
 import { Save } from 'lucide-react'
+import openModal from '../../utils/openModal'
+import ConfirmModal from '../admin/ConfirmModal'
 
 export default function FormCategory() {
     const [name, setName] = useState('')
     const token = useEcomStore((state) => state.token)
     const categories = useEcomStore((state) => state.categories)
     const getCategory = useEcomStore((state) => state.getCategory)
+    const [selectedCategory, setSelectedCategory] = useState(null)// เก็บข้อมูลที่เลือก
 
     useEffect(() => {
         getCategory(token)
     }, [])
 
-    const handleRemove = async (id) => {
-        try {
-            const res = await removeCategory(token, id)
-            toast.success(`Deleted ${res.data.name} success `)
-            getCategory(token)
-        } catch (err) {
-            toast.error(err)
-        }
+    const handleRemove = (category) => {
+        setSelectedCategory(category)
     }
     
     const handleSubmit = async (e) => {
@@ -39,6 +36,16 @@ export default function FormCategory() {
             toast.error(err)
         }
     }
+
+    useEffect(() => {
+        if (selectedCategory) {
+            // หน่วงให้ modal mount ก่อน แล้วค่อยเปิด
+            const timeout = setTimeout(() => {
+                openModal({ modalId: 'confirm-category-modal' })
+            }, 0)
+            return () => clearTimeout(timeout)
+        }
+    }, [selectedCategory])
 
     return (
         <div className='container mx-auto p-4 bg-white shadow-md'>
@@ -68,7 +75,7 @@ export default function FormCategory() {
                         <li className='flex justify-between py-2' key={index}>
                             {item.name}
                             <button 
-                                onClick={() => handleRemove(item.id)}
+                                onClick={() => handleRemove(item)}
                                 className='bg-red-400 rounded-xl px-2 py-1'
                             >
                                 Delete
@@ -77,6 +84,19 @@ export default function FormCategory() {
                     )
                 }
             </ul>
+            {/* Modal ถูก mount ตลอดเวลา พร้อมรับ prop */}
+            {
+                selectedCategory && (
+                    <ConfirmModal
+                        categoryId={selectedCategory.id}
+                        categoryName={selectedCategory.name}
+                        onConfirmed={() => {
+                            getCategory(token)
+                            setSelectedCategory(null)// clear state after remove
+                        }}
+                    />
+                )
+            }
         </div>
     )
 }

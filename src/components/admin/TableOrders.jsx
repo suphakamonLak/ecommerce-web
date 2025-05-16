@@ -46,7 +46,7 @@ export default function TableOrders() {
   return (
     <div className="relative overflow-x-auto">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-lg text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+        <thead className="text-lg text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" className="px-2 py-3 rounded-s-lg">ลำดับ</th>
             <th scope="col" className="px-2 py-3">ผู้ใช้งาน</th>
@@ -56,15 +56,14 @@ export default function TableOrders() {
             <th scope="col" className="px-2 py-3">รวม</th>
             <th scope="col" className="px-2 py-3">สถานะ</th>
             <th scope="col" className="px-2 py-3 rounded-e-lg">จัดการ</th>
-            {/* <th>อัพเดตสถานะ</th> */}
           </tr>
         </thead>
         <tbody>
           {
             orders?.map((item, index) => {
               return (
-                <tr key={index} className="bg-white border-b dark:bg-gray-800 text-gray-900 font-medium">
-                  <th scope="row" className="px-6 py-4 font-medium  whitespace-nowrap dark:text-white">{index+1}</th>
+                <tr key={index} className="bg-white border-b dark:bg-gray-800 text-gray-900">
+                  <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap dark:text-white">{index+1}</th>
                   <td>{item.orderedBy.email}</td>
                   <td>
                     {dateFormat(item.createdAt)}
@@ -83,7 +82,7 @@ export default function TableOrders() {
                   <td>{numberFormat(item.cartTotal)}</td>
                   <td>
                     <span 
-                      className={`${changeColor(item.orderStatus)} px-1 py-1 rounded-full`}
+                      className={`${changeColor(item.orderStatus)} px-1 py-1 rounded-full truncate`}
                     >
                       {item.orderStatus}
                     </span>
