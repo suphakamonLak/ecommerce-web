@@ -63,7 +63,7 @@ export default function TableUsers() {
     return (
         <div className="relative overflow-x-auto">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead className="text-lg text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                <thead className="text-lg uppercase text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" className="px-6 py-3 rounded-s-lg">
                             ลำดับ
@@ -89,7 +89,7 @@ export default function TableUsers() {
                     {
                         users?.map((item, index) => {
                             return (
-                                <tr key={index} className="bg-white border-b dark:bg-gray-800 text-gray-900 font-medium">
+                                <tr key={index} className="bg-white border-b dark:bg-gray-800 text-gray-900">
                                     <th scope="row" className="px-6 py-4 font-medium  whitespace-nowrap dark:text-white">
                                         {index+1}
                                     </th>
@@ -101,7 +101,7 @@ export default function TableUsers() {
                                     </td>
                                     <td className="px-6 py-4">
                                         <select 
-                                            className="select select-neutral bg-white"
+                                            className="select select-neutral bg-white border-none"
                                             onChange={(e) => handleChangeUserRole(item.id, e.target.value)}
                                             value={item.role}
                                         >

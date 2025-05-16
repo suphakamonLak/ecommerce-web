@@ -26,7 +26,7 @@ export default function ListCart() {
     }
 
     return (
-        <div>
+        <div className='h-full'>
             {/* Header */}
             <div className='flex gap-4'>
                 <LayoutList />

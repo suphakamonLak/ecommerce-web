@@ -24,29 +24,29 @@ export default function TableViewProducts({ products }) {
     }
 
     return (
-        <div className="relative overflow-x-auto rounded-lg border mt-5">
-            <table className='w-full text-left rtl:text-right'>
-                <thead className='bg-cyan-800 text-white text-lg'>
+        <div className="relative overflow-x-auto">
+            <table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
+                <thead className='text-lg text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-400'>
                 <tr>
-                    <th className='px-2 py-3'>ลำดับ</th>
-                    <th className='px-2 py-3'>ชื่อสินค้า</th>
-                    <th className='px-2 py-3'>รูปภาพ</th>
-                    <th className='px-2 py-3'>รายละเอียดสินค้า</th>
-                    <th className='px-2 py-3'>ราคาสินค้า</th>
-                    <th className='px-2 py-3'>จำนวนสินค้า</th>
-                    <th className='px-2 py-3'>ขายแล้ว</th>
-                    <th className='px-2 py-3'>วันที่อัปเดต</th>
-                    <th className='px-2 py-3'>จัดการ</th>
+                    <th scope='col' className='px-2 py-3 rounded-s-lg'>ลำดับ</th>
+                    <th scope='col' className='px-2 py-3'>ชื่อสินค้า</th>
+                    <th scope='col' className='px-2 py-3'>รูปภาพ</th>
+                    <th scope='col' className='px-2 py-3'>รายละเอียดสินค้า</th>
+                    <th scope='col' className='px-2 py-3'>ราคาสินค้า</th>
+                    <th scope='col' className='px-2 py-3'>จำนวนสินค้า</th>
+                    <th scope='col' className='px-2 py-3'>ขายแล้ว</th>
+                    <th scope='col' className='px-2 py-3'>วันที่อัปเดต</th>
+                    <th scope='col' className='px-2 py-3 rounded-e-lg'>จัดการ</th>
                 </tr>
                 </thead>
                 <tbody>
                     {
                         products.map((item, index) => {
                             return (
-                                <tr key={index} className='border-b cursor-pointer transition'>
-                                    <th className='px-2 py-3 text-center'>{index+1}</th>
-                                    <td className='px-2 py-3'>{item.title}</td>
-                                    <td className='p-2'>
+                                <tr key={index} className='bg-white border-b dark:bg-gray-800 text-gray-900'>
+                                    <th scope='row' className='px-6 py-4 font-medium'>{index+1}</th>
+                                    <td className='px-6 py-2'>{item.title}</td>
+                                    <td className='px-2 py-2'>
                                         {
                                             item.images.length > 0
                                             ?   <img 
@@ -60,11 +60,11 @@ export default function TableViewProducts({ products }) {
                                                 </div>
                                         }
                                     </td>
-                                    <td className='px-2 py-3'>{item.description}</td>
-                                    <td className='px-2 py-3'>{numberFormat(item.price)}</td>
-                                    <td className='px-2 py-3 text-center'>{item.quantity}</td>
-                                    <td className='px-2 py-3 text-center'>{item.sold}</td>
-                                    <td className='px-2 py-3 text-center'>{dateFormat(item.updatedAt)}</td>
+                                    <td className='px-2 py-2'>{item.description}</td>
+                                    <td className='px-2 py-2'>{numberFormat(item.price)}</td>
+                                    <td className='px-6 py-2'>{item.quantity}</td>
+                                    <td className='px-6 py-2'>{item.sold}</td>
+                                    <td className=''>{dateFormat(item.updatedAt)}</td>
                                     <td>
                                         <div className='flex gap-2 justify-center items-center m-2'>
                                             <div>
