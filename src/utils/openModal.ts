@@ -9,7 +9,7 @@ export default function openModal({ modalId, options={}, beforeOpen = () => {}, 
     const modalOptions: ModalOptions = {
         placement: "center",
         closable: false,
-        backdropClasses: "dark:bg-black/50",
+        backdropClasses: "bg-black/30 fixed",
         ...options,
     }
 
@@ -19,7 +19,7 @@ export default function openModal({ modalId, options={}, beforeOpen = () => {}, 
     }
 
     const el = document.getElementById(modalId);
-    // Check (ป้องกันกรณีเป็น null มันจะruntime error)
+    // Check (ป้องกันกรณีเป็น null มันจะ runtime error)
     if(!el) {
         console.warn(`Modal element with id '${modalId}' not found`);
         return;
@@ -29,11 +29,10 @@ export default function openModal({ modalId, options={}, beforeOpen = () => {}, 
 
     const modal = new Modal(el, modalOptions, instanceOptions);
     modal.show();
+    modal.removeInstance();
 
     if(typeof afterOpen === 'function') {
         afterOpen();
     }
-
-//   modal.removeInstance();
 }
 
