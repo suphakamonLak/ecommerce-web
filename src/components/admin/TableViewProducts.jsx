@@ -1,27 +1,29 @@
-import { removeProduct } from '../../api/Product'
 import { Link } from 'react-router-dom'
 import { Pencil } from 'lucide-react'
 import { Trash2 } from 'lucide-react'
 import { numberFormat } from '../../utils/number'
 import { dateFormat } from '../../utils/dateFormat'
 import useEcomStore from '../../store/Ecom_store'
-import { toast } from 'react-toastify'
+import { useEffect, useState } from 'react'
+import openModal from '../../utils/openModal'
+import ConfirmDelProductModal from './ConfirmDelProductModal'
 
 export default function TableViewProducts({ products }) {
-    const token = useEcomStore((state) => state.token)
     const getProduct = useEcomStore((state) => state.getProduct)
+    const [selectedProdect, setSelectedProdect] = useState(null)
 
-    const handleRemove = async (id) => {
-        if(window.confirm('ต้องการลบสินค้าหรือไม่')) {
-            try {
-                const res = await removeProduct(token, id)
-                toast.success('Deleted product success')
-                getProduct()
-            } catch (err) {
-                console.log(err)
-            }
-        }
+    const handleRemove = (item) => {
+        setSelectedProdect(item)
     }
+
+    useEffect(() => {
+        if(selectedProdect) {
+            const timeout = setTimeout(() => {
+                openModal({ modalId: 'confirm-product-modal' })
+            }, 0)
+            return () => clearTimeout(timeout)
+        }
+    }, [selectedProdect])
 
     return (
         <div className="relative overflow-x-auto">
@@ -71,14 +73,27 @@ export default function TableViewProducts({ products }) {
                                                 <p className='bg-yellow-200 p-2 rounded-md text-gray-800 hover:scale-105 hover:translate-x-1 hover:duration-200'><Link to={'/admin/product/' + item.id}><Pencil /></Link></p>
                                             </div>
                                             <div>
-                                                <p 
+                                                <button 
+                                                    type='button'
                                                     className='bg-red-500 p-2 rounded-md text-gray-800 hover:scale-105 hover:translate-x-1 hover:duration-200'
-                                                    onClick={() => handleRemove(item.id)}
+                                                    onClick={() => handleRemove(item)}
                                                 >
                                                     <Trash2 />
-                                                </p>
+                                                </button>
                                             </div>
                                         </div>
+                                        {
+                                            selectedProdect && (
+                                                <ConfirmDelProductModal
+                                                    productId={selectedProdect.id}
+                                                    productName={selectedProdect.title}
+                                                    onConfirmed={() => {
+                                                        getProduct()
+                                                        setSelectedProdect(null)
+                                                    }}
+                                                />
+                                            )
+                                        }
                                     </td>
                                 </tr>
                             )

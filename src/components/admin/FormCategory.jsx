@@ -2,20 +2,19 @@ import React, { useState, useEffect } from 'react'
 import { createCategory, listCategory, removeCategory} from '../../api/Category'
 import useEcomStore from '../../store/Ecom_store'
 import { toast } from 'react-toastify'
-import ToolBar from './ToolBar'
 import { Save } from 'lucide-react'
 import openModal from '../../utils/openModal'
-import ConfirmModal from '../admin/ConfirmModal'
+import ConfirmModal from './ConfirmDelCategoryModal'
 
 export default function FormCategory() {
     const [name, setName] = useState('')
+    const [selectedCategory, setSelectedCategory] = useState(null)// เก็บข้อมูลที่เลือก
     const token = useEcomStore((state) => state.token)
     const categories = useEcomStore((state) => state.categories)
     const getCategory = useEcomStore((state) => state.getCategory)
-    const [selectedCategory, setSelectedCategory] = useState(null)// เก็บข้อมูลที่เลือก
 
     useEffect(() => {
-        getCategory(token)
+        getCategory()
     }, [])
 
     const handleRemove = (category) => {
@@ -25,13 +24,13 @@ export default function FormCategory() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (!name) return toast.warning('Please fill data')
+        if (!name) return toast.warning('กรุณากรอกประเภทสินค้า')
 
         try {
             const res = await createCategory(token, {name})
-            // console.log(res)
-            toast.success(`Add category ${res.data.name}  success`)
-            getCategory(token)
+            toast.success(`เพิ่มประเภท ${res.data.name}  สำเร็จ`)
+            setName('')
+            getCategory()
         } catch (err) {
             toast.error(err)
         }
@@ -52,6 +51,7 @@ export default function FormCategory() {
             <h1 className='text-2xl font-bold text-gray-700'>ประเภทสินค้า</h1>
             <form className='flex items-center gap-2 my-4' onSubmit={handleSubmit}>
                 <input 
+                    value={name}
                     onChange={(e) => setName(e.target.value)}
                     className='bg-gray-200 border-none  p-2 rounded-md w-2/5 mt-1 mb-1 focus:outline-none focus:ring-2
                             focus:ring-blue-400 focus:border-transparent text-gray-500'
@@ -91,7 +91,7 @@ export default function FormCategory() {
                         categoryId={selectedCategory.id}
                         categoryName={selectedCategory.name}
                         onConfirmed={() => {
-                            getCategory(token)
+                            getCategory()
                             setSelectedCategory(null)// clear state after remove
                         }}
                     />
