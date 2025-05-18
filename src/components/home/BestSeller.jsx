@@ -4,7 +4,7 @@ import ProductCard from '../card/ProductCard'
 import { SwiperSlide } from 'swiper/react';
 import SwiperShow from '../../utils/swiperShow';
 
-export default function BestSeller() {
+export default function BestSeller({count}) {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
@@ -12,7 +12,7 @@ export default function BestSeller() {
     }, [])
 
     const loadProducts = () => {
-        listProductBy("sold", "desc", 12)
+        listProductBy("sold", "desc", count)
             .then((res) => {
                 setProducts(res.data)
             })

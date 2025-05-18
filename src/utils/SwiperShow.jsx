@@ -12,6 +12,7 @@ export default function SwiperShow({ children }) {
         spaceBetween={20}
         // pagination={{
         //     clickable: true,
+
         // }}
         navigation={true}
         modules={[Pagination, Autoplay, Navigation]}
@@ -22,24 +23,32 @@ export default function SwiperShow({ children }) {
         }}
         breakpoints={{
           320: {
-            slidesPerView: 2,
-            spaceBetween: 120,
-          },
-          640: {
             slidesPerView: 3,
-            spaceBetween: 20,
+            spaceBetween: 100
+          },
+          420: {
+            slidesPerView: 3,
+            spaceBetween: 100
+          },
+          500: {
+            slidesPerView: 3,
+            spaceBetween: 80
+          },
+          600: {
+            slidesPerView: 4,
+            spaceBetween: 160,
           },
           768: {
             slidesPerView: 4,
             spaceBetween: 80,
           },
           1024: {
-            slidesPerView: 5,
-            spaceBetween: 40,
+            slidesPerView: 4,
+            spaceBetween: 100,
           },
           1280: {
             slidesPerView: 6,
-            spaceBetween: 50,
+            spaceBetween: 10,
           },
         }}
     >
