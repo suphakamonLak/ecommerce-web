@@ -13,7 +13,6 @@ export default function BestSellerAdmin() {
     const loadProducts = () => {
         listProductBy("sold", "desc", 5)
         .then((res) => {
-            console.log(res.data)
             setProducts(res.data)
         })
         .catch((err) => console.log(err))
@@ -48,7 +47,7 @@ export default function BestSellerAdmin() {
                         </div>
                         <div className='flex gap-6 items-center'>
                             <p>{numberFormat(item.price)} ฿</p>
-                            <p>ขายได้ {item.sold} ชิ้น</p>
+                            <p>ขายแล้ว {item.sold} ชิ้น</p>
                         </div>
                     </div>
                 )
