@@ -8,7 +8,7 @@ export default function Layout() {
     <div className='bg-white text-black font-kanit flex flex-col min-h-screen'>
         <MainNev/>
 
-        <main className='w-full h-full px-4 mt-2 mx-auto flex-grow'>
+        <main className='w-full px-4 mt-2 mx-auto flex-grow'>
           <Outlet /> 
         </main> 
         

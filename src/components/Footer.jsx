@@ -1,11 +1,10 @@
-import React from 'react'
 import { Mail } from 'lucide-react'
 import { CircleFadingPlus } from 'lucide-react'
 import { MessageCircleMore } from 'lucide-react'
 
 export default function Footer() {
     return (
-        <div className='h-20 w-full bg-gray-100 shadow-lg rounded-md flex items-center justify-center text-black font-kanit'>
+        <div className='h-20 w-full mt-8 bg-gray-100 shadow-lg rounded-md flex items-center justify-center text-black font-kanit'>
             <div className='w-2/5 flex justify-center gap-2'>
                 <button className='border-2 border-gray-500 p-1 rounded-full'><Mail/></button>
                 <button className='border-2 border-gray-500 p-1 rounded-full'><CircleFadingPlus /></button>

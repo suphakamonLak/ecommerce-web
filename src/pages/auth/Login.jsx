@@ -46,15 +46,15 @@ export default function Login() {
   return (
     <div className='flex justify-center'>
       <div className='bg-white w-3/5 h-3/4 shadow-md rounded-md border-2 border-gray-200'> 
-        <p className='text-3xl text-center font-bold mt-2'>Login</p>
-        <div className='flex justify-center p-1'>
+        <p className='text-3xl text-center font-bold text-gray-600 mt-3'>Login</p>
+        <div className='flex justify-center pl-6'>
           <form className='my-5 flex justify-center' onSubmit={handleSubmit}>
             <div className='w-1/2 '>
-              <div className='flex h-50 flex-col gap-2 p-2'>
+              <div className='flex h-50 flex-col gap-1 pr-1'>
                 <div>
                   <label name='email'>Email:</label>
                   <input 
-                    className='bg-gray-200 border-none text-gray-500 p-1 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
+                    className='bg-gray-200 border-none text-gray-500 p-2 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
                     focus:ring-blue-400 focus:border-transparent'
                     onChange={handleOnChange}
                     name='email'
@@ -66,7 +66,7 @@ export default function Login() {
                 <div>
                   <label name='password'>Password:</label>
                   <input 
-                    className='bg-gray-200 border-none text-gray-500 p-1 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
+                    className='bg-gray-200 border-none text-gray-500 p-2 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
                     focus:ring-blue-400 focus:border-transparent'
                     onChange={handleOnChange}
                     name='password'
@@ -75,7 +75,7 @@ export default function Login() {
                     placeholder='Password'
                   />
                 </div>
-                <div>
+                <div className='mt-2'>
                   <button className='bg-blue-400 rounded-md p-2 mr-3 w-full'>Login</button>
                 </div>
               </div>

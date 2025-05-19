@@ -61,7 +61,8 @@ export default function TableUsers() {
     }
 
     return (
-        <div className="relative overflow-x-auto">
+        <div className="relative overflow-x-auto pl-2">
+            <h1 className='text-2xl text-gray-700 mt-4 mb-4'>Manage Users</h1>
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead className="text-lg uppercase text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                     <tr>

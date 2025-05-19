@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 import Resize from 'react-image-file-resizer'
 import { removeFiles, uploadFiles } from '../../api/Product'
 import useEcomStore from '../../store/Ecom_store'
-import { Loader } from 'lucide-react'
+import { CloudUpload, Loader } from 'lucide-react'
 
 export default function Uploadfile({ form, setForm }) {
     const [isLoading, setIsLoading] = useState(false)
@@ -101,13 +101,19 @@ export default function Uploadfile({ form, setForm }) {
 
             <div>
                 {/* upload multipl images */}
-                <input 
-                    className="file-input file-input-md bg-gray-200 text-gray-500"
-                    type='file'
-                    name='images'
-                    multiple
-                    onChange={handleOnChange}
-                />
+                <label class="block mb-2 text-lg text-gray-700 dark:text-white" for="file_input">Upload file</label>
+                <div className='w-1/2 flex border rounded-lg pl-2 pt-2'>
+                    <CloudUpload className='text-gray-500 cursor-pointer'/>
+                    <input 
+                        id="file_input"
+                        aria-describedby='file_input_help'
+                        className="text-sm text-gray-700 rounded-lg cursor-pointer bg-gray-50"
+                        type='file'
+                        name='images'
+                        multiple
+                        onChange={handleOnChange}
+                    />
+                </div>
             </div>
         </div>
     )
