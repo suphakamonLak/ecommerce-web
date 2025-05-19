@@ -42,13 +42,17 @@ export default function SwiperShow({ children }) {
             slidesPerView: 4,
             spaceBetween: 80,
           },
-          1024: {
+          900: {
             slidesPerView: 4,
-            spaceBetween: 100,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 40,
           },
           1280: {
             slidesPerView: 6,
-            spaceBetween: 10,
+            spaceBetween: 5,
           },
         }}
     >

@@ -47,13 +47,13 @@ export default function FormCategory() {
     }, [selectedCategory])
 
     return (
-        <div className='container mx-auto p-4 bg-white shadow-md'>
-            <h1 className='text-2xl font-bold text-gray-700'>ประเภทสินค้า</h1>
-            <form className='flex items-center gap-2 my-4' onSubmit={handleSubmit}>
+        <div className='container'>
+            <h1 className='text-2xl text-gray-700 mt-4 mb-6 mx-2'>ประเภทสินค้า</h1>
+            <form className='w-3/5 flex items-center gap-2 my-4' onSubmit={handleSubmit}>
                 <input 
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className='bg-gray-200 border-none  p-2 rounded-md w-2/5 mt-1 mb-1 focus:outline-none focus:ring-2
+                    className='bg-gray-200 border-none  p-2 rounded-md w-full mt-1 mb-1 focus:outline-none focus:ring-2
                             focus:ring-blue-400 focus:border-transparent text-gray-500'
                     type="text" 
                     placeholder='--ประเภทสินค้า--'
@@ -68,11 +68,10 @@ export default function FormCategory() {
                     </button>
                 </div>
             </form>
-            <hr />
-            <ul className='list-none'>
+            <ul className='list-none w-3/5'>
                 {
                     categories.map((item, index) =>
-                        <li className='flex justify-between py-2' key={index}>
+                        <li className='flex justify-between py-4 border-b-2' key={index}>
                             {item.name}
                             <button 
                                 onClick={() => handleRemove(item)}
