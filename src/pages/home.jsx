@@ -12,7 +12,7 @@ export default function Home() {
         <p className='text-2xl text-gray-700'>สินค้าขายดี</p>
         <ArrowRightLeft/>
       </div>
-      <BestSeller/>
+      <BestSeller count={12}/>
 
       <div className='flex justify-between'>
         <p className='text-2xl text-gray-700'>สินค้ามาใหม่</p>

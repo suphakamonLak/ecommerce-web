@@ -48,3 +48,11 @@ export const changeUserRole = async (token, value) => {
         }
     })
 }
+
+export const getDashboard = async (token) => {
+    return await axios.get('http://localhost:5000/api/admin/dashboard', {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}
