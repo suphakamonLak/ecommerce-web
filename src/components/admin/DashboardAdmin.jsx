@@ -28,7 +28,7 @@ export default function DashboardAdmin() {
             const data = res.data
             // console.log('res dashboard', data)
             setDashboardData({
-                totalRevenue: data.totalRevenue._sum.amount ?? 0,
+                totalRevenue: data.totalRevenue ?? 0,
                 totalOrders: data.totalOrders,
                 soldout: data.outofStockCount,
                 topProducts: data.topProducts,

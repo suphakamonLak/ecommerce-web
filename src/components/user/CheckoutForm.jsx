@@ -33,7 +33,6 @@ export default function CheckoutForm() {
       redirect: 'if_required'
     });
 
-    console.log('payload', payload)
     if (payload.error) {
       setMessage(payload.error.message)
       toast.error(payload.error.message)

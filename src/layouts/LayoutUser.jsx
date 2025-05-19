@@ -5,9 +5,9 @@ import Footer from '../components/Footer'
 
 export default function LayoutUser() {
   return (
-    <div className='bg-white text-black font-kanit'>
+    <div className='bg-white text-black font-kanit flex flex-col min-h-screen'>
         <MainNev/>
-        <main className='h-full px-4 mt-2 mx-auto font-kanit'>
+        <main className='w-full h-full px-4 mt-2 mx-auto font-kanit flex-grow'>
           <Outlet /> 
         </main> 
         <Footer/>

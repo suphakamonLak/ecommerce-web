@@ -20,7 +20,7 @@ export default function ListCart() {
             navigate('/checkout')
         })
         .catch((err) => {
-            console.log(err)
+            // console.log(err)
             toast.warn(err.response.data.message)
         })
     }

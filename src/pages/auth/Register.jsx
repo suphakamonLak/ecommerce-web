@@ -17,15 +17,12 @@ const registerSchema = z.object({// Validate fild data
 
 export default function Register() {
   const [passwordScore, setPasswordScore] = useState(0)
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-    confirmPassword: ""
-  })
+  
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: {errors},
   } = useForm({
     resolver: zodResolver(registerSchema)
@@ -40,12 +37,11 @@ export default function Register() {
     setPasswordScore(validatePassword())
   }, [watch().password])
 
-  console.log('passwordScore', passwordScore)
-
   const onSubmit = async (data) => {
     try {
       const res = await axios.post('http://localhost:5000/api/register', data)
       toast.success(res.data)
+      reset()
     } catch (err) {
       const errMsg = err.response?.data?.message
       toast.error(errMsg)

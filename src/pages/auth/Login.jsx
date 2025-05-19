@@ -28,6 +28,7 @@ export default function Login() {
       // Check role user
       roleRedirect(role)
       toast.success('Welcome Back')
+      setForm('')
     } catch (err) {
       const errMsg = err.response?.data?.message
       toast.error(errMsg)
@@ -43,7 +44,7 @@ export default function Login() {
   })
 
   return (
-    <div className='h-svh flex justify-center'>
+    <div className='flex justify-center'>
       <div className='bg-white w-3/5 h-3/4 shadow-md rounded-md border-2 border-gray-200'> 
         <p className='text-3xl text-center font-bold mt-2'>Login</p>
         <div className='flex justify-center p-1'>

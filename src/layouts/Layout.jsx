@@ -5,10 +5,10 @@ import Footer from '../components/Footer'
 
 export default function Layout() {
   return (
-    <div className='bg-white text-black font-kanit'>
+    <div className='bg-white text-black font-kanit flex flex-col min-h-screen'>
         <MainNev/>
 
-        <main className='h-full px-4 mt-2 mx-auto'>
+        <main className='w-full h-full px-4 mt-2 mx-auto flex-grow'>
           <Outlet /> 
         </main> 
         
