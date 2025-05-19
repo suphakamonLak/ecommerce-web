@@ -49,7 +49,7 @@ export default function Register() {
   }
 
   return (
-    <div className='h-svh flex justify-center'>
+    <div className='flex justify-center'>
       <div className='bg-white w-3/5 h-3/4 shadow-md rounded-md border-2 border-gray-200'>
         <p className='text-3xl text-center font-bold mt-2'>Register</p>
         <div className='flex justify-center p-1'>
