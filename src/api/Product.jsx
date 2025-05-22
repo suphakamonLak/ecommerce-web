@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const createProduct = async (token, form) => {
     // url, data, config
-    return await axios.post('http://localhost:5000/api/product', form, {
+    return await axios.post('https://ecommerce-api-nine-iota.vercel.app/api/product', form, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -11,11 +11,11 @@ export const createProduct = async (token, form) => {
 
 export const listProducts = async (count = 100) => {
     // url, data, config
-    return await axios.get(`http://localhost:5000/api/products/${count}`)
+    return await axios.get(`https://ecommerce-api-nine-iota.vercel.app/api/products/${count}`)
 }
 
 export const readProduct = async (token, id) => {// 
-    return await axios.get(`http://localhost:5000/api/product/${id}`, {
+    return await axios.get(`https://ecommerce-api-nine-iota.vercel.app/api/product/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -23,7 +23,7 @@ export const readProduct = async (token, id) => {//
 }
 
 export const updateProduct = async (token, id, form) => {
-    return await axios.put(`http://localhost:5000/api/product/${id}`, form, {
+    return await axios.put(`https://ecommerce-api-nine-iota.vercel.app/api/product/${id}`, form, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -31,7 +31,7 @@ export const updateProduct = async (token, id, form) => {
 }
 
 export const removeProduct = async (token, id) => {
-    return await axios.delete(`http://localhost:5000/api/product/${id}`, {
+    return await axios.delete(`https://ecommerce-api-nine-iota.vercel.app/api/product/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -39,7 +39,7 @@ export const removeProduct = async (token, id) => {
 }
 
 export const uploadFiles = async (token, form) => {
-    return axios.post('http://localhost:5000/api/images', 
+    return axios.post('https://ecommerce-api-nine-iota.vercel.app/api/images', 
     {
         image: form
     }, {
@@ -50,7 +50,7 @@ export const uploadFiles = async (token, form) => {
 }
 
 export const removeFiles = async (token, public_id) => {
-    return axios.post('http://localhost:5000/api/removeimage', 
+    return axios.post('https://ecommerce-api-nine-iota.vercel.app/api/removeimage', 
     {
         public_id
     }, {
@@ -61,11 +61,11 @@ export const removeFiles = async (token, public_id) => {
 }
 
 export const searchFilters = async (arg) => {
-    return await axios.post('http://localhost:5000/api/search/filters', arg)
+    return await axios.post('https://ecommerce-api-nine-iota.vercel.app/api/search/filters', arg)
 }
 
 export const listProductBy = async (sort, order, limit) => {
-    return await axios.post('http://localhost:5000/api/productby', {
+    return await axios.post('https://ecommerce-api-nine-iota.vercel.app/api/productby', {
         sort,
         order,
         limit
