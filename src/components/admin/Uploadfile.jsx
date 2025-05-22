@@ -101,7 +101,7 @@ export default function Uploadfile({ form, setForm }) {
 
             <div>
                 {/* upload multipl images */}
-                <label class="block mb-2 text-lg text-gray-700 dark:text-white" for="file_input">Upload file</label>
+                <label className="block mb-2 text-lg text-gray-700 dark:text-white" htmlFor="file_input">Upload file</label>
                 <div className='w-1/2 flex border rounded-lg pl-2 pt-2'>
                     <CloudUpload className='text-gray-500 cursor-pointer'/>
                     <input 

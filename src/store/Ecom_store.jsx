@@ -53,7 +53,7 @@ const ecomStore = (set, get) => ({
   },
   actionLogin: async (form) => {
     // Send to Back
-    const res = await axios.post('http://localhost:5000/api/login', form)
+    const res = await axios.post('https://ecommerce-api-nine-iota.vercel.app/api/login', form)
 
     // Set value
     set({
