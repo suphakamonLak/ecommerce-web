@@ -44,12 +44,12 @@ export default function Login() {
   })
 
   return (
-    <div className='flex justify-center'>
-      <div className='bg-white w-3/5 h-3/4 shadow-md rounded-md border-2 border-gray-200'> 
-        <p className='text-3xl text-center font-bold text-gray-600 mt-3'>Login</p>
-        <div className='flex justify-center pl-6'>
+    <div className='flex justify-center items-center'>
+      <div className='bg-white shadow-md rounded-md border-2 border-gray-200'> 
+        <p className='text-3xl text-center mt-3'>Login</p>
+        <div className='flex justify-center px-6'>
           <form className='my-5 flex justify-center' onSubmit={handleSubmit}>
-            <div className='w-1/2 '>
+            <div>
               <div className='flex h-50 flex-col gap-1 pr-1'>
                 <div>
                   <label name='email'>Email:</label>
@@ -79,12 +79,6 @@ export default function Login() {
                   <button className='bg-blue-400 rounded-md p-2 mr-3 w-full'>Login</button>
                 </div>
               </div>
-            </div>
-            <div className='w-1/2 h-50 flex'>
-              <img 
-                className='object-contain'
-                src="../assets/images/login.jpg"
-              />
             </div>
           </form>
         </div>

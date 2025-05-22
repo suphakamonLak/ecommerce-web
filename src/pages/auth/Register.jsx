@@ -50,11 +50,11 @@ export default function Register() {
 
   return (
     <div className='flex justify-center'>
-      <div className='bg-white w-3/5 h-3/4 shadow-md rounded-md border-2 border-gray-200'>
-        <p className='text-3xl text-center font-bold text-gray-700 mt-3'>Register</p>
-        <div className='flex justify-center pl-6'>
+      <div className='bg-white shadow-md rounded-md border-2 border-gray-200'>
+        <p className='text-3xl text-center mt-3'>Register</p>
+        <div className='flex justify-center px-6'>
           <form className='my-5 flex justify-center' onSubmit={handleSubmit(onSubmit)}>
-            <div className='w-1/2'>
+            <div>
               <div className='flex h-50 flex-col gap-1 pr-1'>
                 <div>
                   <label name='email'>
@@ -118,12 +118,6 @@ export default function Register() {
                   <p className='text-start'>Already have an account? <NavLink to="/login" className='text-blue-700 font-bold'>Sing in</NavLink></p>
                 </div>
               </div>
-            </div>
-            <div className='w-1/2 h-50 flex'>
-              <img 
-                className='object-contain'
-                src="../assets/images/login.jpg"
-              />
             </div>
           </form>
         </div>
