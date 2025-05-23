@@ -1,12 +1,60 @@
-# React + Vite
+## 🛒 E-Commerce Fullstack
+This project is a full-featured E-commerce web application developed with a **React** frontend and an **ExpressJS** backend.
+It supports both user and admin roles, with authentication, product management, order processing, and a dynamic sales dashboard.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 🔧 Backend
+- Manage screen where users can:
+  - 🧩 ExpressJS – Node.js framework for building REST APIs
+  - 🛠️ Prisma – ORM for handling database operations (CRUD)
+  - 🗄️ MySQL used in development (PostgreSQL used in deployment)
+  - 🔐 JWT – Used for token-based authentication
+  - 🧪 Postman – Used for API testing
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🎨 Frontend
+- ⚛️ React – SPA frontend framework
+- 🎨 Tailwind CSS – For responsive styling
+- 💠 Flowbite – UI components built on Tailwind
+- 🔁 Axios – For API communication
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 👤 User Features
+- 🏠 Home Page:
+  - Displays best-selling products and new arrivals
+- 🛍️ Shop Page:
+  - Browse all products
+  - Filter by name, category, or price range
+- 🛒 Cart Page:
+  - View selected items
+  - Requires login before proceeding to checkout
+- 💳 Payment Page:
+  - Complete order payment
+- 📦 Order History:
+  - View past orders and their current status
+<img width="950" src="[https://github.com/user-attachments/assets/1a4df71d-559b-447b-bf8e-7455044d9079](https://github.com/user-attachments/assets/abef9136-c11e-4eb8-a2e3-479e7573ddc8)"/>
+
+---
+
+
+## 🛠️ Admin Features
+- 📊 Dashboard:
+  - View all orders, total sales
+  - Out-of-stock products
+  - Daily/Monthly sales chart
+  - Top 5 best-selling products
+- 👥 Manage Users:
+  - Control user roles and status
+- 🗂️ Category Management:
+  - Add new categories
+  - Delete with confirmation modal
+- 📦 Product Management:
+  - Add, edit, and delete products
+  - View product list
+  - Deletion includes confirmation modal
+- 📑 Orders Management:
+  - Manage and update order status
+<img width="950" src="https://github.com/user-attachments/assets/5a502561-5d39-4293-85e6-c0f1dd35ec24"/>
