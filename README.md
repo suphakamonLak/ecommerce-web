@@ -35,9 +35,10 @@ It supports both user and admin roles, with authentication, product management, 
   - Complete order payment
 - 📦 Order History:
   - View past orders and their current status
-<img width="950" src="[https://github.com/user-attachments/assets/1a4df71d-559b-447b-bf8e-7455044d9079](https://github.com/user-attachments/assets/abef9136-c11e-4eb8-a2e3-479e7573ddc8)"/>
+<img width="950" src="https://github.com/user-attachments/assets/15378876-a375-4a8e-97a6-207d3ee5465d"/>
 
 ---
+
 
 
 ## 🛠️ Admin Features
