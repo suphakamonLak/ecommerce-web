@@ -20,7 +20,7 @@ export default function MainNev() {
                     <div className='flex items-center gap-6'>
                         <NavLink to={'/'} >
                             <div className='flex items-center'>
-                                <h1 className='text-xl text-gray-700 font-medium mr-1'>Lucy Shop</h1>
+                                <h1 className='text-base text-gray-700 font-medium mr-1'>LucyShop</h1>
                                 <Cat/>
                             </div>
                         </NavLink>
