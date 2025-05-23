@@ -65,7 +65,7 @@ export default function SearchCard() {
     }
 
     return (
-        <div className='space-y-6'>
+        <div className='space-y-2'>
             <div class="relative">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                     <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -80,9 +80,8 @@ export default function SearchCard() {
                     placeholder="Search Product..."
                 />
             </div>
-            <hr />
             
-            <div>
+            <div className='overflow-auto'>
                 <h1 className='text-md my-2'>หมวดหมู่สินค้า</h1>
                 <div>
                     {

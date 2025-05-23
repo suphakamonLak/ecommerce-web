@@ -13,14 +13,14 @@ export default function Shop() {
   }, [])
 
   return (
-    <div className='h-full grid grid-cols-6'>
+    <div className='h-full flex'>
         {/* Searchbar */}
-        <div className='col-start-1 col-span-2 border h-screen p-4'>
+        <div className='w-1/4 border h-screen p-4'>
           <SearchCard/>
         </div>
 
         {/* Products */}
-          <div className='col-start-3 col-span-2 border p-4 h-screen overflow-y-auto'>
+          <div className='w-1/2 border p-4 h-screen overflow-y-auto'>
             <p className='text-2xl mb-4'>สินค้าทั้งหมด</p>
             <div className='flex gap-6 flex-wrap justify-center'>
               {/* Products cart */}
@@ -33,7 +33,7 @@ export default function Shop() {
           </div>
 
         {/* Cart */}
-        <div className='col-end-7 col-span-2 border p-4 h-screen overflow-y-auto'>
+        <div className='w-1/4 p-4 h-screen overflow-y-auto'>
           <h1 className='text-2xl mb-4'>ตะกร้าสินค้า</h1>
           <CartCard/>
         </div>
