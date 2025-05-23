@@ -39,7 +39,7 @@ export default function Register() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post('https://ecommerce-api-nine-iota.vercel.app/api/register', data)
+      const res = await axios.post('https://ecommerce-web-rqpp.vercel.app/api/register', data)
       toast.success(res.data)
       reset()
     } catch (err) {
