@@ -12,8 +12,14 @@ export default function ProtectRoteAdmin({ element }) {
     if (user && token) {
       // Send to Back
       currentAdmin(token)
-      .then((res) => setOk(true) )
-      .catch((err) => setOk(false))
+      .then((res) => {
+        console.log('res admin', res)
+        setOk(true) 
+      })
+      .catch((err) => {
+        console.log('err admin', err)
+        setOk(false)
+      })
     }
   }, [])
   

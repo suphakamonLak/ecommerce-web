@@ -12,8 +12,14 @@ export default function ProtectRoteUser({ element }) {
     if (user && token) {
       // Send to Back
       currentUser(token)
-      .then((res) => setOk(true) )
-      .catch((err) => setOk(false))
+      .then((res) => {
+        console.log('res user', res)
+        setOk(true) 
+      })
+      .catch((err) => {
+        console.log('err user', err)
+        setOk(false)
+      })
     }
   }, [])
   
