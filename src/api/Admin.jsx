@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getOrdersAdmin = async (token) => {// 
-    return await axios.get('https://ecommerce-api-nine-iota.vercel.app/api/admin/orders', {
+    return await axios.get('https://ecommerce-api-pink.vercel.app/api/admin/orders', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -9,7 +9,7 @@ export const getOrdersAdmin = async (token) => {//
 }
 
 export const changeOrderAdmin = async (token, orderId, orderStatus) => {// 
-    return await axios.put('https://ecommerce-api-nine-iota.vercel.app/api/admin/order-status', 
+    return await axios.put('https://ecommerce-api-pink.vercel.app/api/admin/order-status', 
     {
         orderId,
         orderStatus
@@ -22,7 +22,7 @@ export const changeOrderAdmin = async (token, orderId, orderStatus) => {//
 }
 
 export const getListAllUsers = async (token) => {
-    return await axios.get('https://ecommerce-api-nine-iota.vercel.app/api/users', {
+    return await axios.get('https://ecommerce-api-pink.vercel.app/api/users', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -30,7 +30,7 @@ export const getListAllUsers = async (token) => {
 }
 
 export const changeUserStatus = async (token, value) => {
-    return await axios.post('https://ecommerce-api-nine-iota.vercel.app/api/change-status', 
+    return await axios.post('https://ecommerce-api-pink.vercel.app/api/change-status', 
         value,
         {
         headers: {
@@ -40,7 +40,7 @@ export const changeUserStatus = async (token, value) => {
 }
 
 export const changeUserRole = async (token, value) => {
-    return await axios.post('https://ecommerce-api-nine-iota.vercel.app/api/change-role', 
+    return await axios.post('https://ecommerce-api-pink.vercel.app/api/change-role', 
         value,
         {
         headers: {
@@ -50,7 +50,7 @@ export const changeUserRole = async (token, value) => {
 }
 
 export const getDashboard = async (token) => {
-    return await axios.get('https://ecommerce-api-nine-iota.vercel.app/api/admin/dashboard', {
+    return await axios.get('https://ecommerce-api-pink.vercel.app/api/admin/dashboard', {
         headers: {
             Authorization: `Bearer ${token}`
         }
