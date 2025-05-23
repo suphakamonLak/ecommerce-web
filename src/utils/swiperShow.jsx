@@ -22,13 +22,14 @@ export default function SwiperShow({ children }) {
             disableOnInteraction: false,
         }}
         breakpoints={{
+
           320: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 100
           },
           420: {
-            slidesPerView: 3,
-            spaceBetween: 100
+            slidesPerView: 2,
+            spaceBetween: 10
           },
           500: {
             slidesPerView: 3,
@@ -40,7 +41,7 @@ export default function SwiperShow({ children }) {
           },
           768: {
             slidesPerView: 4,
-            spaceBetween: 80,
+            spaceBetween: 120,
           },
           900: {
             slidesPerView: 4,
@@ -48,11 +49,11 @@ export default function SwiperShow({ children }) {
           },
           1024: {
             slidesPerView: 5,
-            spaceBetween: 40,
+            spaceBetween: 60,
           },
           1280: {
             slidesPerView: 6,
-            spaceBetween: 5,
+            spaceBetween: 20,
           },
         }}
     >
