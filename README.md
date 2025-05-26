@@ -58,6 +58,9 @@ It supports both user and admin roles, with authentication, product management, 
   - Deletion includes confirmation modal
 - 📑 Orders Management:
   - Manage and update order status
+
+---
+
 login
 email: dev.test@example.com
 password: 11111111
