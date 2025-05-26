@@ -63,5 +63,5 @@ It supports both user and admin roles, with authentication, product management, 
 
 login
 email: dev.test@example.com
-password: 11111111
+password: 11111111<br/>
 <img width="950" src="https://github.com/user-attachments/assets/5a502561-5d39-4293-85e6-c0f1dd35ec24"/>
