@@ -58,4 +58,7 @@ It supports both user and admin roles, with authentication, product management, 
   - Deletion includes confirmation modal
 - 📑 Orders Management:
   - Manage and update order status
+login
+email: dev.test@example.com
+password: 11111111
 <img width="950" src="https://github.com/user-attachments/assets/5a502561-5d39-4293-85e6-c0f1dd35ec24"/>
