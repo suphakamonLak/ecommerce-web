@@ -1,13 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { getOrdersAdmin, changeOrderAdmin } from '../../api/Admin'
 import useEcomStore from '../../store/Ecom_store'
 import { toast } from 'react-toastify'
 import { numberFormat } from '../../utils/number'
 import { dateFormat } from '../../utils/dateFormat'
+import FilterSortBy from '../global/FilterSortBy'
 
 export default function TableOrders() {
   const token = useEcomStore((state) => state.token)
   const [orders, setOrders] = useState([])
+  const [selectedStatus, setSelectedStatus] = useState('All')
+  
+  const statusOptions = ['All', 'Not Process', 'Processing', 'Completed', 'Cancelled']
+
+  const handleSelected = (value) => {
+    setSelectedStatus(value)
+  }
+
+  const filteredOrders = useMemo(() => {
+    if (selectedStatus === 'All') return orders
+
+    return orders.filter(order => order.orderStatus === selectedStatus)
+  }, [orders, selectedStatus])
 
   useEffect(() => {
     handleGetOrder(token)
@@ -25,13 +39,13 @@ export default function TableOrders() {
 
   const handleChangeOrderStatus = (token, orderId, orderStatus) => {
     changeOrderAdmin(token, orderId, orderStatus)
-        .then((res) => {
-          toast.success('อัพเดตสถานะเรียบร้อย')
-          handleGetOrder(token)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+      .then((res) => {
+        toast.success('อัพเดตสถานะเรียบร้อย')
+        handleGetOrder(token)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   const changeColor = (status) => {
@@ -46,6 +60,7 @@ export default function TableOrders() {
   return (
     <div className="relative overflow-x-auto pl-2">
       <h1 className='text-2xl text-gray-700 mt-4 mb-4'>Orders</h1>
+      <FilterSortBy statusOptions={statusOptions} onSelect={handleSelected}/>
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-lg text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -61,7 +76,7 @@ export default function TableOrders() {
         </thead>
         <tbody>
           {
-            orders?.map((item, index) => {
+            filteredOrders.map((item, index) => {
               return (
                 <tr key={index} className="bg-white border-b dark:bg-gray-800 text-gray-900">
                   <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap dark:text-white">{index+1}</th>
